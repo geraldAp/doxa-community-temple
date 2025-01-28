@@ -1,101 +1,144 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div>
+      {/* Hero Section */}
+      <section className="relative h-[60vh] flex items-center justify-center text-white">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src="/church-hero.jpg"
+          alt="Church"
+          layout="fill"
+          objectFit="cover"
+          className="absolute inset-0 z-0"
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <div className="relative z-20 text-center">
+          <h1 className="text-5xl font-bold mb-4">Welcome to Our Church</h1>
+          <p className="text-xl mb-8">Join us in worship and community</p>
+          <Link
+            href="/membership"
+            className="bg-white text-gray-900 px-6 py-3 rounded-full font-bold hover:bg-gray-200 transition duration-300"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Join Us This Sunday
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Daily Devotional Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-8 text-center">
+            Daily Devotional
+          </h2>
+          <div className="bg-white p-8 rounded-lg shadow-md flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+              <h3 className="text-2xl font-semibold mb-4">Today's Message</h3>
+              <p className="text-gray-700 mb-4">
+                "For God so loved the world that he gave his one and only Son,
+                that whoever believes in him shall not perish but have eternal
+                life." - John 3:16
+              </p>
+              <p className="text-gray-600">
+                Reflect on God's immense love for us and how we can share that
+                love with others in our daily lives.
+              </p>
+            </div>
+            <div className="md:w-1/2">
+              <Image
+                src="/devotional-image.jpg"
+                alt="Daily Devotional"
+                width={400}
+                height={300}
+                objectFit="cover"
+                className="rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Church Introduction Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-8 text-center">
+            Our Mission & Vision
+          </h2>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-xl text-center text-gray-700 mb-6">
+              Our mission is to spread the love of Christ, serve our community,
+              and help each individual grow in their faith journey.
+            </p>
+            <p className="text-xl text-center text-gray-700">
+              Our vision is to create a welcoming environment where all can
+              experience God's grace, find their purpose, and make a positive
+              impact in the world.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Events Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-8 text-center">
+            Upcoming Events
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold mb-2">
+                Sunday Worship Service
+              </h3>
+              <p className="text-gray-600 mb-4">Date: Every Sunday, 10:00 AM</p>
+              <p className="text-gray-700">
+                Join us for our weekly worship service filled with inspiring
+                messages, uplifting music, and a warm community.
+              </p>
+              <Link
+                href="/events"
+                className="mt-4 inline-block text-blue-600 hover:underline"
+              >
+                Learn More
+              </Link>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold mb-2">
+                Youth Group Meeting
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Date: Every Wednesday, 7:00 PM
+              </p>
+              <p className="text-gray-700">
+                Our youth group meets weekly for fun activities, Bible study,
+                and fellowship. All teenagers are welcome!
+              </p>
+              <Link
+                href="/events"
+                className="mt-4 inline-block text-blue-600 hover:underline"
+              >
+                Learn More
+              </Link>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold mb-2">Community Outreach</h3>
+              <p className="text-gray-600 mb-4">
+                Date: First Saturday of every month, 9:00 AM
+              </p>
+              <p className="text-gray-700">
+                Join us in serving our local community through various outreach
+                programs and volunteer opportunities.
+              </p>
+              <Link
+                href="/events"
+                className="mt-4 inline-block text-blue-600 hover:underline"
+              >
+                Learn More
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
