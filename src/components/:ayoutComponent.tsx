@@ -1,33 +1,39 @@
-import Head from "next/head"
-import Link from "next/link"
-import { Facebook, Instagram, Twitter } from "lucide-react"
-import React from "react"
+import Link from "next/link";
+import { Facebook, Instagram, Twitter } from "lucide-react";
+import React from "react";
 
-export default function Layout({ children, title = "Our Church" }:{children:React.ReactNode,title:string}) {
+export default function Layout({
+  children,
+  title = "Our Church",
+}: {
+  children: React.ReactNode;
+  title: string;
+}) {
   return (
     <div className="min-h-screen flex flex-col">
-      <Head>
-        <title>{title} | Our Church</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <header className="bg-white shadow-md">
         <nav className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold text-gray-800">
-              Our Church
+              Doxa
             </Link>
             <div className="hidden md:flex space-x-4">
               <Link href="/" className="text-gray-700 hover:text-gray-900">
                 Home
               </Link>
-              <Link href="/gallery" className="text-gray-700 hover:text-gray-900">
+              <Link
+                href="/gallery"
+                className="text-gray-700 hover:text-gray-900"
+              >
                 Gallery
               </Link>
               <Link href="/give" className="text-gray-700 hover:text-gray-900">
                 Give/Volunteer
               </Link>
-              <Link href="/membership" className="text-gray-700 hover:text-gray-900">
+              <Link
+                href="/membership"
+                className="text-gray-700 hover:text-gray-900"
+              >
                 Membership
               </Link>
               <Link href="/blog" className="text-gray-700 hover:text-gray-900">
@@ -45,7 +51,12 @@ export default function Layout({ children, title = "Our Church" }:{children:Reac
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             </button>
           </div>
@@ -59,7 +70,9 @@ export default function Layout({ children, title = "Our Church" }:{children:Reac
           <div className="flex flex-wrap justify-between">
             <div className="w-full md:w-1/4 mb-6 md:mb-0">
               <h3 className="text-xl font-bold mb-2">Our Church</h3>
-              <p className="text-gray-400">123 Church Street, City, State 12345</p>
+              <p className="text-gray-400">
+                123 Church Street, City, State 12345
+              </p>
               <p className="text-gray-400">Phone: (123) 456-7890</p>
               <p className="text-gray-400">Email: info@ourchurch.com</p>
             </div>
@@ -72,7 +85,10 @@ export default function Layout({ children, title = "Our Church" }:{children:Reac
                   </Link>
                 </li>
                 <li>
-                  <Link href="/gallery" className="text-gray-400 hover:text-white">
+                  <Link
+                    href="/gallery"
+                    className="text-gray-400 hover:text-white"
+                  >
                     Gallery
                   </Link>
                 </li>
@@ -82,7 +98,10 @@ export default function Layout({ children, title = "Our Church" }:{children:Reac
                   </Link>
                 </li>
                 <li>
-                  <Link href="/membership" className="text-gray-400 hover:text-white">
+                  <Link
+                    href="/membership"
+                    className="text-gray-400 hover:text-white"
+                  >
                     Membership
                   </Link>
                 </li>
@@ -134,6 +153,5 @@ export default function Layout({ children, title = "Our Church" }:{children:Reac
         </div>
       </footer>
     </div>
-  )
+  );
 }
-

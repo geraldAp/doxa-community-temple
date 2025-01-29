@@ -18,7 +18,7 @@ export default function Give() {
           <DonationForm />
           <VolunteerForm />
         </div>
-        <ImpactSection />
+        {/* <ImpactSection /> */}
       </div>
     </div>
   );

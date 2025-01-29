@@ -5,10 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 
 interface AccordionProps {
-  items: {
-    question: string
-    answer: string
-  }[]
+  items: FAQ[]
 }
 
 export function Accordion({ items }: AccordionProps) {

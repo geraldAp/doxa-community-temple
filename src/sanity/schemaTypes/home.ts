@@ -31,16 +31,15 @@ export const homeType = defineType({
     }),
     defineField({
       name: "churchEvents",
-      title:'CHurch Events',
-      type: "object",
-      fields: [
+      title: "Church Events",
+      type: "array", 
+      of: [
         {
-          title: "Event",
-          name:'churchEvent',
           type: "reference",
-          to:[{type:'event'}]
+          to: [{ type: "event" }],
         },
       ],
+      description: "A list of events related to the church",
     }),
   ],
 });
