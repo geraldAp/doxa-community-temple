@@ -4,7 +4,6 @@ import React from "react";
 
 export default function Layout({
   children,
-  title = "Our Church",
 }: {
   children: React.ReactNode;
   title: string;
@@ -20,6 +19,9 @@ export default function Layout({
             <div className="hidden md:flex space-x-4">
               <Link href="/" className="text-gray-700 hover:text-gray-900">
                 Home
+              </Link>
+              <Link href="/about" className="text-gray-700 hover:text-gray-900">
+                About
               </Link>
               <Link
                 href="/gallery"
