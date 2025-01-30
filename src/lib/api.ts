@@ -5,7 +5,8 @@ import { groq } from "next-sanity";
 
 export async function getChurchHomePageInfo(): Promise<HomeDocument> {
   try {
-    const data: HomeDocument = await client.fetch(groq`*[_type =='home'][0]{
+    const data: HomeDocument = await client.fetch(
+      groq`*[_type =='home'][0]{
       _id,
       heroImage,
       dailyMessage,
@@ -21,7 +22,12 @@ export async function getChurchHomePageInfo(): Promise<HomeDocument> {
           current
         }
       }
-        }`);
+        }`,
+      {},
+      {
+        cache: "no-store",
+      }
+    );
     return data;
   } catch (error) {
     throw error;
@@ -31,7 +37,11 @@ export async function getChurchHomePageInfo(): Promise<HomeDocument> {
 export async function getFaqs(): Promise<FAQ[]> {
   try {
     const data = await client.fetch(
-      groq`*[_type == 'faq']{ _id,question,answer}`
+      groq`*[_type == 'faq']{ _id,question,answer}`,
+      {},
+      {
+        cache: "no-store",
+      }
     );
     return data;
   } catch (error) {
@@ -41,7 +51,8 @@ export async function getFaqs(): Promise<FAQ[]> {
 
 export async function getAboutPage(): Promise<AboutDocument> {
   try {
-    const data: AboutDocument = await client.fetch(groq`*[_type == 'about'][0]{
+    const data: AboutDocument = await client.fetch(
+      groq`*[_type == 'about'][0]{
         _id,
         ourStory,
         beliefs,
@@ -52,7 +63,12 @@ export async function getAboutPage(): Promise<AboutDocument> {
           role
         },
         serviceActivities
-      }`);
+      }`,
+      {},
+      {
+        cache: "no-store",
+      }
+    );
     return data;
   } catch (error) {
     throw error;
