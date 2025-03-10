@@ -1,60 +1,31 @@
-import { defineField, defineType } from "sanity";
-
-export const galleryType = defineType({
-  name: "photoGallery",
-  title: "Photo Gallery",
-  type: "document",
+import { defineType, defineField } from 'sanity';
+export const galleryType =  defineType({
+  name: 'galleryPage',
+  title: 'Gallery Page',
+  type: 'document',
   fields: [
     defineField({
-      title: "Title",
-      type: "string",
-      name: "title",
-    }),
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: { source: "title", maxLength: 96 },
-    }),
-    defineField({
-      title: "Description",
-      type: "text",
-      name: "description",
-    }),
-    defineField({
-      name: "showCaseImage",
-      title: "ShowCase image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: "coverImage",
-      title: "Cover image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: "groupedImages",
-      title: "Grouped Images",
-      type: "array",
+      name: 'images',
+      title: 'Gallery Images',
+      type: 'array',
       of: [
         {
-          type: "image",
-          options: {
-            hotspot: true,
-          },
+          type: 'object',
           fields: [
-            {
-              name: "alt",
-              title: "Alt Text",
-              type: "string",
-              description:
-                "Add alternative text for the image (for accessibility).",
-            },
+            defineField({
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {
+                hotspot: true, // Enables image cropping
+              },
+            }),
+            defineField({
+              name: 'alt',
+              title: 'Alt Text',
+              type: 'string',
+              description: 'A short description of the image for accessibility.',
+            }),
           ],
         },
       ],

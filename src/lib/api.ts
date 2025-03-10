@@ -74,3 +74,29 @@ export async function getAboutPage(): Promise<AboutDocument> {
     throw error;
   }
 }
+
+export const fetchGalleryPage = async () :Promise<ImagesArray[]> => {
+  try {
+    const query = groq`*[_type == "galleryPage"][0]{
+    images[]{
+      image{
+        asset->{
+          _id,
+          url
+        }
+      },
+      alt
+    }
+  }`;
+    const data = await client.fetch(
+      query,
+      {},
+      {
+        cache: "no-store",
+      }
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
