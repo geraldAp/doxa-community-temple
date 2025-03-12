@@ -1,41 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { X } from "lucide-react"
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 
-const images = [
-  {
-    src: "https://images.unsplash.com/photo-1438032506450-9a0e60d8a638?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2h1cmNofGVufDB8fDB8fHww",
-    alt: "Church exterior",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1601926638178-8bcc3d4f2391?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNodXJjaCUyMGV2ZW50fGVufDB8fDB8fHww",
-    alt: "Church event",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1515162305285-0293e4767cc2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2h1cmNoJTIwc2VydmljZXxlbnwwfHwwfHx8MA%3D%3D",
-    alt: "Church service",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1560184611-ff3e53f00e8f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNodXJjaCUyMGNvbW11bml0eXxlbnwwfHwwfHx8MA%3D%3D",
-    alt: "Community gathering",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2h1cmNoJTIwd29yc2hpcHxlbnwwfHwwfHx8MA%3D%3D",
-    alt: "Worship service",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1585858229735-cd08d8cb510d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNodXJjaCUyMHlvdXRofGVufDB8fDB8fHww",
-    alt: "Youth group",
-  },
-]
 
-type ImageType = (typeof images)[0]
 
-export default function Gallery() {
-  const [lightboxImage, setLightboxImage] = useState<ImageType | null>(null)
+export default function Gallery({
+  galleryData,
+}: Readonly<{
+  galleryData: ImagesArray;
+}>) {
+  const [lightboxImage, setLightboxImage] = useState<ImageWithAlt| null>(null);
 
   return (
     <div className="min-h-screen bg-white">
@@ -72,7 +49,7 @@ export default function Gallery() {
       {/* Gallery Grid */}
       <div className="max-w-7xl mx-auto px-4 py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {images.map((image, index) => (
+          {galleryData?.map((image, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -82,7 +59,7 @@ export default function Gallery() {
               onClick={() => setLightboxImage(image)}
             >
               <Image
-                src={image.src || "/placeholder.svg"}
+                src={image.image.asset.url || "/placeholder.svg"}
                 alt={image.alt}
                 layout="fill"
                 objectFit="cover"
@@ -114,7 +91,7 @@ export default function Gallery() {
               onClick={(e) => e.stopPropagation()}
             >
               <Image
-                src={lightboxImage.src || "/placeholder.svg"}
+                src={lightboxImage.image.asset.url || "/placeholder.svg"}
                 alt={lightboxImage.alt}
                 layout="fill"
                 objectFit="contain"
@@ -133,6 +110,5 @@ export default function Gallery() {
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }
-

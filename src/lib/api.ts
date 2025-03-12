@@ -64,10 +64,7 @@ export async function getAboutPage(): Promise<AboutDocument> {
         },
         serviceActivities
       }`,
-      {},
-      {
-        cache: "no-store",
-      }
+
     );
     return data;
   } catch (error) {
@@ -75,7 +72,7 @@ export async function getAboutPage(): Promise<AboutDocument> {
   }
 }
 
-export const fetchGalleryPage = async () :Promise<ImagesArray[]> => {
+export const fetchGalleryPage = async (): Promise<ImagesArray> => {
   try {
     const query = groq`*[_type == "galleryPage"][0]{
     images[]{

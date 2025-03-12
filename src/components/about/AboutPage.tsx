@@ -4,7 +4,7 @@ import { HeroSection } from "../reusables/HeroSection";
 import { PastorCard } from "./PastorCard";
 import { Section } from "./Section";
 
-export default function About({ aboutInfo }: { aboutInfo: AboutDocument }) {
+export default function About({ aboutInfo }: Readonly<{ aboutInfo: AboutDocument }>) {
   return (
     <div className="min-h-screen bg-gray-50">
       <HeroSection
@@ -24,9 +24,10 @@ export default function About({ aboutInfo }: { aboutInfo: AboutDocument }) {
       <Section title="Our Beliefs" className="bg-gray-100">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg text-gray-700 mb-6">
-            At Grace Community Church, we believe in the inerrancy of Scripture,
-            the Trinity, and salvation through faith in Jesus Christ. We are
-            committed to:
+            At Doxa Community Temple we aim to lead people to Christ, restore
+            families, rebuild leaders, establish wealthy and service-driven
+            believers, reclaim lost positions, and prepare a God-centered
+            community for eternity.
           </p>
           <ul className="text-left list-disc list-inside text-lg text-gray-700 mb-6">
             {aboutInfo?.beliefs?.map((belief, i) => <li key={i}>{belief}</li>)}

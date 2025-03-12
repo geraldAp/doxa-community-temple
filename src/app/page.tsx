@@ -54,13 +54,12 @@ export default async function Home() {
           </h2>
           <div className="max-w-3xl mx-auto">
             <p className="text-xl text-center text-gray-700 mb-6">
-              Our mission is to spread the love of Christ, serve our community,
-              and help each individual grow in their faith journey.
+              <span className="font-semibold">Our mission</span> :{" "}
+              {data?.mission}
             </p>
             <p className="text-xl text-center text-gray-700">
-              Our vision is to create a welcoming environment where all can
-              experience God's grace, find their purpose, and make a positive
-              impact in the world.
+            <span className="font-semibold">Our vision</span> :{" "}
+             {data?.vision}
             </p>
           </div>
         </div>

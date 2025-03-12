@@ -11,7 +11,7 @@ export const Links = [
   ]
   
   export const socialLinks = [
-    { href: "https://facebook.com/ourchurch", icon: Facebook },
-    { href: "https://instagram.com/ourchurch", icon: Instagram },
-    { href: "https://twitter.com/ourchurch", icon: Twitter },
+    { href: "#", icon: Facebook },
+    { href: "#", icon: Instagram },
+    { href: "#", icon: Twitter },
   ]
