@@ -1,27 +1,40 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { useChat } from "@ai-sdk/react"
-import { MessageCircle, Send, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { useState } from "react";
+import { useChat } from "@ai-sdk/react";
+import { MessageCircle, Send, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import ReactMarkdown from "react-markdown";
+import { cn } from "@/lib/utils";
 
 export default function Chatbot() {
-  const [isChatOpen, setIsChatOpen] = useState(false)
-  const { messages, input, handleInputChange, handleSubmit, isLoading, status } = useChat({
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const {
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    isLoading,
+    status,
+  } = useChat({
     api: "/api/chat",
-  })
+  });
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     if (input.trim()) {
-      handleSubmit(e)
+      handleSubmit(e);
     }
-  }
+  };
 
   return (
     <>
@@ -39,7 +52,10 @@ export default function Chatbot() {
       {isChatOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50 animate-in fade-in duration-300">
           {/* Overlay */}
-          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setIsChatOpen(false)} />
+          <div
+            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+            onClick={() => setIsChatOpen(false)}
+          />
 
           {/* Chat Window */}
           <Card className="w-full max-w-md mx-4 shadow-xl relative z-10 flex flex-col animate-in slide-in-from-bottom-10 duration-300">
@@ -65,16 +81,24 @@ export default function Chatbot() {
                 </div>
               ) : (
                 messages.map((message, index) => (
-                  <div key={index} className={cn("flex", message.role === "user" ? "justify-end" : "justify-start")}>
+                  <div
+                    key={index}
+                    className={cn(
+                      "flex",
+                      message.role === "user" ? "justify-end" : "justify-start"
+                    )}
+                  >
                     <div
                       className={cn(
                         "p-3 rounded-lg max-w-[85%] break-words",
                         message.role === "user"
-                          ? "bg-primary text-primary-foreground rounded-tr-none"
-                          : "bg-muted rounded-tl-none",
+                          ? "bg-slate-300 text-primary-foreground rounded-tr-none"
+                          : "bg-muted rounded-tl-none"
                       )}
                     >
-                      {message.content}
+                      <div className="prose max-w-none">
+                        <ReactMarkdown>{message.content}</ReactMarkdown>
+                      </div>
                     </div>
                   </div>
                 ))
@@ -103,7 +127,12 @@ export default function Chatbot() {
                   className="flex-grow"
                   disabled={isLoading}
                 />
-                <Button type="submit" size="icon" disabled={isLoading || !input.trim()} aria-label="Send message">
+                <Button
+                  type="submit"
+                  size="icon"
+                  disabled={isLoading || !input.trim()}
+                  aria-label="Send message"
+                >
                   <Send className="h-4 w-4" />
                 </Button>
               </form>
@@ -112,6 +141,5 @@ export default function Chatbot() {
         </div>
       )}
     </>
-  )
+  );
 }
-
