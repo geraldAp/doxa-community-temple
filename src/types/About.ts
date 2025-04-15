@@ -10,6 +10,10 @@ export interface AboutDocument {
   beliefs?: string[]; 
   pastors?: Pastor[]; 
   serviceActivities?: string[]; 
+  vision?: string;
+  mission?: string;
+  values?: string[];
+  history?: string;
 }
 
 export interface Pastor {
