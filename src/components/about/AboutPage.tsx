@@ -29,9 +29,9 @@ export default function About({ aboutInfo }: Readonly<{ aboutInfo: AboutDocument
             believers, reclaim lost positions, and prepare a God-centered
             community for eternity.
           </p>
-          <ul className="text-left list-disc list-inside text-lg text-gray-700 mb-6">
+          {/* <ul className="text-left list-disc list-inside text-lg text-gray-700 mb-6">
             {aboutInfo?.beliefs?.map((belief, i) => <li key={i}>{belief}</li>)}
-          </ul>
+          </ul> */}
           <p className="text-lg text-gray-700">
             We welcome all who seek to know God better and strive to create an
             inclusive environment where everyone can experience God's love and
@@ -42,7 +42,7 @@ export default function About({ aboutInfo }: Readonly<{ aboutInfo: AboutDocument
 
       <Section title="Our Pastors">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {aboutInfo?.pastors?.map((pastor, i) => (
+          {/* {aboutInfo?.pastors?.map((pastor, i) => (
             <PastorCard
               key={i}
               name={pastor.name}
@@ -50,7 +50,7 @@ export default function About({ aboutInfo }: Readonly<{ aboutInfo: AboutDocument
               bio={pastor.description!}
               imageSrc={pastor?.image}
             />
-          ))}
+          ))} */}
         </div>
       </Section>
 
@@ -62,9 +62,9 @@ export default function About({ aboutInfo }: Readonly<{ aboutInfo: AboutDocument
             Church. We offer various ways to get involved:
           </p>
           <ul className="text-left list-disc list-inside text-lg text-gray-700 mb-6">
-            {aboutInfo?.serviceActivities?.map((activity, i) => (
+            {/* {aboutInfo?.serviceActivities?.map((activity, i) => (
               <li key={i}>{activity}</li>
-            ))}
+            ))} */}
           </ul>
           <p className="text-lg text-gray-700 mb-8">
             We'd love to meet you and help you find your place in our church

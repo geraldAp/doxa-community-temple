@@ -10,6 +10,16 @@ export const aboutType = defineType({
       type: "text",
     }),
     defineField({
+      name: "vision",
+      title: "Vision",
+      type: "text",
+    }),
+    defineField({
+      name: "mission",
+      title: "Mission",
+      type: "text",
+    }),
+    defineField({
       title: "Our Objectives",
       name: "beliefs",
       type: "array",
