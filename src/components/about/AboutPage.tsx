@@ -1,10 +1,15 @@
 "use client";
 import { AboutDocument } from "@/types/About";
+import { HomeDocument } from "@/types/Home";
 import { HeroSection } from "../reusables/HeroSection";
 import { PastorCard } from "./PastorCard";
 import { Section } from "./Section";
+import { PortableTextRenderer } from "../shared/PortableTextRenderer";
 
-export default function About({ aboutInfo }: Readonly<{ aboutInfo: AboutDocument }>) {
+export default function About({
+  aboutInfo,
+  homeInfo,
+}: Readonly<{ aboutInfo: AboutDocument; homeInfo?: HomeDocument }>) {
   return (
     <div className="min-h-screen bg-gray-50">
       <HeroSection
@@ -15,9 +20,39 @@ export default function About({ aboutInfo }: Readonly<{ aboutInfo: AboutDocument
         backgroundImage="https://images.unsplash.com/photo-1438032506450-9a0e60d8a638?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
       />
 
+      <Section title="Vision">
+        <div className="max-w-3xl mx-auto text-center">
+          {homeInfo?.vision ? (
+            <p className="text-lg text-gray-700 mb-6">{homeInfo.vision}</p>
+          ) : (
+            <p className="text-gray-500">Vision will appear here when available.</p>
+          )}
+        </div>
+      </Section>
+
+      <Section title="Mission" className="bg-gray-100">
+        <div className="max-w-3xl mx-auto text-center">
+          {homeInfo?.mission ? (
+            <p className="text-lg text-gray-700 mb-6">{homeInfo.mission}</p>
+          ) : (
+            <p className="text-gray-500">Mission will appear here when available.</p>
+          )}
+        </div>
+      </Section>
+
       <Section title="Our Story">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-lg text-gray-700 mb-6">{aboutInfo.ourStory}</p>
+          {aboutInfo?.ourStory ? (
+            <p className="text-lg text-gray-700 mb-6">{aboutInfo.ourStory}</p>
+          ) : (
+            <p className="text-gray-500">Our story will be shared here soon.</p>
+          )}
+        </div>
+      </Section>
+
+      <Section title="Learn More">
+        <div className="max-w-3xl mx-auto">
+          <PortableTextRenderer value={aboutInfo?.aboutBlocks as unknown[]} />
         </div>
       </Section>
 

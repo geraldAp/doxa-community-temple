@@ -9,30 +9,51 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 import { Heart, ChevronRight } from "lucide-react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+
+const MembershipSchema = z.object({
+  fullName: z.string().min(2, "Full name is required"),
+  email: z.string().email("Valid email required"),
+  phone: z.string().min(7, "Phone is required"),
+  address: z.string().min(5, "Address is required"),
+  status: z.enum(["visitor", "member"]),
+});
+
+type MembershipFormData = z.infer<typeof MembershipSchema>;
 
 export default function Membership() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    status: "visitor",
-  })
+  const [pending, setPending] = useState(false)
   const { toast } = useToast()
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm<MembershipFormData>({
+    resolver: zodResolver(MembershipSchema),
+    defaultValues: { fullName: "", email: "", phone: "", address: "", status: "visitor" },
+  })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    toast({
-      title: "Registration Successful",
-      description: "Thank you for registering. We'll be in touch soon!",
-    })
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      address: "",
-      status: "visitor",
-    })
+  const onSubmit = async (data: MembershipFormData) => {
+    try {
+      setPending(true)
+      const res = await fetch("/api/membership", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          address: data.address,
+        }),
+      })
+      if (!res.ok) {
+        toast({ title: "Submission failed", description: "Please check your details and try again." })
+        return
+      }
+      toast({ title: "Registration Successful", description: "Thank you for registering. We'll be in touch soon!" })
+    } catch {
+      toast({ title: "Network error", description: "Please try again later." })
+    } finally {
+      setPending(false)
+    }
   }
 
   return (
@@ -111,17 +132,17 @@ export default function Membership() {
               <p className="text-gray-600">Fill out the form below and become part of our community</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Full Name</Label>
                 <Input
                   id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  {...register("fullName")}
                   required
                   className="border-gray-200"
                   placeholder="Enter your full name"
                 />
+                {errors.fullName && <p className="text-red-600 text-sm">{errors.fullName.message}</p>}
               </div>
 
               <div className="space-y-2">
@@ -129,12 +150,12 @@ export default function Membership() {
                 <Input
                   id="email"
                   type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  {...register("email")}
                   required
                   className="border-gray-200"
                   placeholder="your@email.com"
                 />
+                {errors.email && <p className="text-red-600 text-sm">{errors.email.message}</p>}
               </div>
 
               <div className="space-y-2">
@@ -142,31 +163,30 @@ export default function Membership() {
                 <Input
                   id="phone"
                   type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  {...register("phone")}
                   required
                   className="border-gray-200"
                   placeholder="Your phone number"
                 />
+                {errors.phone && <p className="text-red-600 text-sm">{errors.phone.message}</p>}
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="address">Address</Label>
                 <Textarea
                   id="address"
-                  value={formData.address}
-                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                  {...register("address")}
                   required
                   className="border-gray-200"
                   placeholder="Your address"
                 />
+                {errors.address && <p className="text-red-600 text-sm">{errors.address.message}</p>}
               </div>
 
               <div className="space-y-3">
                 <Label>I am a:</Label>
                 <RadioGroup
-                  value={formData.status}
-                  onValueChange={(value) => setFormData({ ...formData, status: value })}
+                  onValueChange={(value) => setValue("status", value as "visitor" | "member", { shouldValidate: true })}
                   className="flex flex-col space-y-2"
                 >
                   <div className="flex items-center space-x-3">
@@ -178,9 +198,10 @@ export default function Membership() {
                     <Label htmlFor="member">Interested in Membership</Label>
                   </div>
                 </RadioGroup>
+                {errors.status && <p className="text-red-600 text-sm">{errors.status.message}</p>}
               </div>
 
-              <Button type="submit" className="w-full" size="lg">
+              <Button type="submit" className="w-full" size="lg" disabled={pending}>
                 Join Our Community
                 <Heart className="w-4 h-4 ml-2" />
               </Button>
@@ -191,4 +212,3 @@ export default function Membership() {
     </div>
   )
 }
-

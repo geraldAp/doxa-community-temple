@@ -9,6 +9,7 @@ export interface HomeDocument {
   _updatedAt?: string;
   heroImage?: SanityImageSource; // Image field for the hero image
   dailyMessage?: string; // Text field for the daily message
+  dailyVerse?: string; // Text field for the daily verse
   vision?: string; // Text field for the vision
   mission?: string; // Text field for the mission
   churchEvents?:EventType[]

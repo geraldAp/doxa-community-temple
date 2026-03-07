@@ -1,4 +1,3 @@
-import { title } from "process";
 import { defineField, defineType } from "sanity";
 
 export const homeType = defineType({
@@ -17,6 +16,11 @@ export const homeType = defineType({
     defineField({
       name: "dailyMessage",
       title: "Daily Message",
+      type: "text",
+    }),
+    defineField({
+      name: "dailyVerse",
+      title: "Daily Verse",
       type: "text",
     }),
     defineField({

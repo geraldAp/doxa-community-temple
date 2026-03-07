@@ -10,6 +10,13 @@ export const aboutType = defineType({
       type: "text",
     }),
     defineField({
+      name: "aboutBlocks",
+      title: "About Content Blocks",
+      type: "array",
+      of: [{ type: "blockContent" }],
+      description: "Flexible content sections supporting headings, text, and images",
+    }),
+    defineField({
       title: "Our Objectives",
       name: "beliefs",
       type: "array",

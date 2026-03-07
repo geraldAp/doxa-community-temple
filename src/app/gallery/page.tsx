@@ -1,9 +1,16 @@
 import React from "react";
 import Gallery from "@/components/gallery/Gallery";
-import { fetchGalleryPage } from "@/lib/api";
+import GalleryAlbums from "@/components/gallery/GalleryAlbums";
+import { fetchGalleryPage, fetchGalleryAlbums } from "@/lib/api";
 const page = async () => {
-  const data = await fetchGalleryPage();
-  return <Gallery galleryData={data} />;
+  const [albums, imagesFallback] = await Promise.all([
+    fetchGalleryAlbums(),
+    fetchGalleryPage(),
+  ]);
+  if (albums && albums.length > 0) {
+    return <GalleryAlbums albums={albums} />;
+  }
+  return <Gallery galleryData={imagesFallback} />;
 };
 
 export default page;

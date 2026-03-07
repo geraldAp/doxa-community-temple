@@ -38,9 +38,21 @@ export default async function Home() {
             Daily Devotional
           </h2>
           <div className="bg-white p-8 rounded-lg shadow-md flex flex-col md:flex-row items-center">
-            <div className=" mb-6 md:mb-0 md:pr-8">
-              <h3 className="text-2xl font-semibold mb-4">Today's Message</h3>
-              <p className="text-gray-700 mb-4">{data?.dailyMessage}</p>
+            <div className="w-full">
+              <h3 className="text-2xl font-semibold mb-4">Today's Verse</h3>
+              {data?.dailyVerse ? (
+                <blockquote className="border-l-4 border-primary pl-4 italic text-gray-800 mb-6">
+                  {data.dailyVerse}
+                </blockquote>
+              ) : (
+                <p className="text-gray-500 mb-6">No verse available today.</p>
+              )}
+              <h3 className="text-xl font-semibold mb-2">Message</h3>
+              {data?.dailyMessage ? (
+                <p className="text-gray-700">{data.dailyMessage}</p>
+              ) : (
+                <p className="text-gray-500">No message available today.</p>
+              )}
             </div>
           </div>
         </div>

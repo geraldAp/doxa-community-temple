@@ -9,6 +9,8 @@ import { homeType } from "./home";
 import { galleryType } from "./galleryType";
 import { faqType } from "./faqType";
 import { aboutType } from "./about";
+import { galleryAlbumType } from "./galleryAlbum";
+import { giveSettingsType } from "./giveSettings";
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     blockContentType,
@@ -16,9 +18,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     aboutType,
     eventType,
     galleryType,
+    galleryAlbumType,
     faqType,
     categoryType,
     postType,
     authorType,
+    giveSettingsType,
   ],
 };

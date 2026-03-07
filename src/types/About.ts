@@ -7,6 +7,7 @@ export interface AboutDocument {
   _createdAt?: string;
   _updatedAt?: string;
   ourStory?: string; 
+  aboutBlocks?: unknown[];
   beliefs?: string[]; 
   pastors?: Pastor[]; 
   serviceActivities?: string[]; 

@@ -8,6 +8,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent } from "@/components/ui/card"
 import { Users, Music, Baby, HandHelpingIcon as Helping, ChevronRight } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
 
 const volunteerAreas = [
   { value: "children", label: "Children's Ministry", icon: Baby },
@@ -16,22 +19,42 @@ const volunteerAreas = [
   { value: "outreach", label: "Community Outreach", icon: Helping },
 ]
 
-export function VolunteerForm() {
-  const [volunteerForm, setVolunteerForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    interest: "",
-  })
-  const { toast } = useToast()
+const VolunteerSchema = z.object({
+  name: z.string().min(2, "Name is required"),
+  email: z.string().email("Valid email required"),
+  phone: z.string().min(7, "Phone is required"),
+  interest: z.string().min(2, "Select an area"),
+});
 
-  const handleVolunteerSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    toast({
-      title: "Thank you for volunteering!",
-      description: "We'll be in touch soon with more information.",
-    })
-    setVolunteerForm({ name: "", email: "", phone: "", interest: "" })
+type VolunteerFormData = z.infer<typeof VolunteerSchema>;
+
+export function VolunteerForm({ introText }: { introText?: string }) {
+  const [pending, setPending] = useState(false)
+  const { toast } = useToast()
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm<VolunteerFormData>({
+    resolver: zodResolver(VolunteerSchema),
+    defaultValues: { name: "", email: "", phone: "", interest: "" },
+  })
+
+  const onSubmit = async (data: VolunteerFormData) => {
+    try {
+      setPending(true)
+      const res = await fetch("/api/volunteer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+      const json = await res.json()
+      if (!res.ok) {
+        toast({ title: "Submission failed", description: "Please check your details and try again." })
+        return
+      }
+      toast({ title: "Thank you for volunteering!", description: "We'll be in touch soon with more information." })
+    } catch {
+      toast({ title: "Network error", description: "Please try again later." })
+    } finally {
+      setPending(false)
+    }
   }
 
   return (
@@ -54,9 +77,13 @@ export function VolunteerForm() {
             <Users className="w-8 h-8 text-primary" />
             Volunteer
           </h2>
-          <p className="text-gray-600 text-lg leading-relaxed mb-6">
-            Join our team of dedicated volunteers and make a difference in our community through various ministries.
-          </p>
+          {introText ? (
+            <p className="text-gray-700 text-lg leading-relaxed mb-6">{introText}</p>
+          ) : (
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              Join our team of dedicated volunteers and make a difference in our community through various ministries.
+            </p>
+          )}
           <div className="grid grid-cols-2 gap-4 mb-8">
             {volunteerAreas.map((area, index) => (
               <motion.div
@@ -71,47 +98,46 @@ export function VolunteerForm() {
               </motion.div>
             ))}
           </div>
-          <form onSubmit={handleVolunteerSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="name">Full Name</Label>
               <Input
                 id="name"
-                value={volunteerForm.name}
-                onChange={(e) => setVolunteerForm({ ...volunteerForm, name: e.target.value })}
+                {...register("name")}
                 className="h-12"
                 placeholder="Enter your full name"
                 required
               />
+              {errors.name && <p className="text-red-600 text-sm">{errors.name.message}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
-                value={volunteerForm.email}
-                onChange={(e) => setVolunteerForm({ ...volunteerForm, email: e.target.value })}
+                {...register("email")}
                 className="h-12"
                 placeholder="your@email.com"
                 required
               />
+              {errors.email && <p className="text-red-600 text-sm">{errors.email.message}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone">Phone</Label>
               <Input
                 id="phone"
                 type="tel"
-                value={volunteerForm.phone}
-                onChange={(e) => setVolunteerForm({ ...volunteerForm, phone: e.target.value })}
+                {...register("phone")}
                 className="h-12"
                 placeholder="Your phone number"
                 required
               />
+              {errors.phone && <p className="text-red-600 text-sm">{errors.phone.message}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="interest">Area of Interest</Label>
               <Select
-                value={volunteerForm.interest}
-                onValueChange={(value) => setVolunteerForm({ ...volunteerForm, interest: value })}
+                onValueChange={(value) => setValue("interest", value, { shouldValidate: true })}
               >
                 <SelectTrigger className="h-12">
                   <SelectValue placeholder="Select an area" />
@@ -127,8 +153,9 @@ export function VolunteerForm() {
                   ))}
                 </SelectContent>
               </Select>
+              {errors.interest && <p className="text-red-600 text-sm">{errors.interest.message}</p>}
             </div>
-            <Button type="submit" size="lg" className="w-full">
+            <Button type="submit" size="lg" className="w-full" disabled={pending}>
               Get Involved
               <ChevronRight className="w-4 h-4 ml-2" />
             </Button>
@@ -138,4 +165,3 @@ export function VolunteerForm() {
     </motion.section>
   )
 }
-

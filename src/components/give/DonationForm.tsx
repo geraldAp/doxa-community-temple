@@ -10,7 +10,7 @@ import { useToast } from "@/hooks/use-toast"
 
 const presetAmounts = ["1000", "5000", "10000", "50000"]
 
-export function DonationForm() {
+export function DonationForm({ paymentInstructions }: { paymentInstructions?: string }) {
   const [donationAmount, setDonationAmount] = useState("")
   const { toast } = useToast()
 
@@ -38,10 +38,14 @@ export function DonationForm() {
             <Gift className="w-8 h-8 text-primary" />
             Give Today
           </h2>
-          <p className="text-gray-600 text-lg leading-relaxed mb-6">
-            Your generous donations help us continue our mission and serve our community. Every contribution makes a
-            difference.
-          </p>
+          {paymentInstructions ? (
+            <p className="text-gray-700 text-lg leading-relaxed mb-6">{paymentInstructions}</p>
+          ) : (
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              Your generous donations help us continue our mission and serve our community. Every contribution makes a
+              difference.
+            </p>
+          )}
           <form onSubmit={handleDonation} className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
               {presetAmounts.map((amount) => (
@@ -83,4 +87,3 @@ export function DonationForm() {
     </motion.section>
   )
 }
-

@@ -5,7 +5,7 @@ import { HeroSection } from "./HeroSection";
 import { ImpactSection } from "./ImpactSection";
 import { VolunteerForm } from "./VolunteerForm";
 
-export default function Give() {
+export default function Give({ settings }: { settings?: { paymentInstructions?: string; volunteerIntroText?: string } }) {
   return (
     <div className="min-h-screen bg-gray-50">
       <HeroSection
@@ -15,8 +15,8 @@ export default function Give() {
       />
       <div className="max-w-6xl mx-auto px-4 py-24">
         <div className="grid md:grid-cols-2 gap-16">
-          <DonationForm />
-          <VolunteerForm />
+          <DonationForm paymentInstructions={settings?.paymentInstructions} />
+          <VolunteerForm introText={settings?.volunteerIntroText} />
         </div>
         {/* <ImpactSection /> */}
       </div>
