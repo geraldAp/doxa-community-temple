@@ -8,6 +8,13 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
         background: "hsl(var(--background))",
@@ -56,21 +63,42 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        sans: ["var(--font-geist-sans)", "ui-sans-serif", "system-ui"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular"],
+      },
       typography: {
         DEFAULT: {
           css: {
-            color: "#4a5568", // Custom text color
-            "h1, h2, h3, h4": {
-              color: "#2d3748", // Darker headings
+            color: "hsl(var(--foreground))",
+            maxWidth: "65ch",
+            "[class~='lead']": {
+              color: "hsl(var(--foreground))",
             },
             a: {
-              color: "#3182ce",
+              color: "hsl(var(--primary))",
+              textDecoration: "underline",
+              fontWeight: "500",
               "&:hover": {
-                color: "#2b6cb0",
+                color: "hsl(var(--primary))",
+                opacity: 0.8,
               },
             },
-            ".prose": {
-              fontSize: "16px", // Default font size
+            strong: {
+              color: "hsl(var(--foreground))",
+              fontWeight: "600",
+            },
+            "h1, h2, h3, h4": {
+              color: "hsl(var(--foreground))",
+              fontWeight: "700",
+              scrollMarginTop: "5rem",
+            },
+            blockquote: {
+              borderLeftColor: "hsl(var(--border))",
+              color: "hsl(var(--muted-foreground))",
+            },
+            hr: {
+              borderColor: "hsl(var(--border))",
             },
           },
         },

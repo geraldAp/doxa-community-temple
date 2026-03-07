@@ -1,5 +1,6 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { Reference } from "sanity";
+import { EventType } from "./Event";
 
 export interface HomeDocument {
   _type: "home";

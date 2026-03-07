@@ -4,23 +4,28 @@ import { Links, socialLinks } from "./sharedLinks";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-800 text-white">
-      <div className="container mx-auto px-6 py-8">
-        <div className="flex flex-wrap justify-between">
-          <div className="w-full md:w-1/4 mb-6 md:mb-0">
-            <h3 className="text-xl font-bold mb-2">Our Church</h3>
-            <p className="text-gray-400">Oyibi, Adamorobe Obama </p>
-            <p className="text-gray-400">Phone: (+233) 000 000 000</p>
-            <p className="text-gray-400">Email: </p>
+    <footer className="bg-muted text-muted-foreground pt-16 pb-8">
+      <div className="container px-4 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          {/* Brand & Info */}
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-foreground tracking-tighter">Doxa</h3>
+            <div className="space-y-2 text-sm">
+              <p>Oyibi, Adamorobe Obama</p>
+              <p>Phone: (+233) 000 000 000</p>
+              <p>Email: contact@doxa.org</p>
+            </div>
           </div>
-          <div className="w-full md:w-1/4 mb-6 md:mb-0">
-            <h3 className="text-xl font-bold mb-2">Quick Links</h3>
-            <ul className="space-y-2">
+
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-foreground">Quick Links</h3>
+            <ul className="space-y-2 text-sm">
               {Links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white"
+                    className="hover:text-primary transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -28,26 +33,43 @@ export function Footer() {
               ))}
             </ul>
           </div>
-          <div className="w-full md:w-1/4 mb-6 md:mb-0">
-            <h3 className="text-xl font-bold mb-2">Connect With Us</h3>
-            <div className="flex space-x-4 mt-4">
+
+          {/* Ministries (Placeholder for now) */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-foreground">Ministries</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="#" className="hover:text-primary transition-colors">Kids</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Youth</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Worship</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Outreach</Link></li>
+            </ul>
+          </div>
+
+          {/* Connect */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-foreground">Connect With Us</h3>
+            <div className="flex space-x-4">
               {socialLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white"
+                  className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  <link.icon size={24} />
+                  <link.icon size={20} />
                 </a>
               ))}
             </div>
+            <p className="text-xs max-w-xs">
+              Join our newsletter to stay updated with upcoming events and daily devotions.
+            </p>
           </div>
         </div>
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+
+        <div className="border-t border-border mt-12 pt-8 text-center text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Our Church. All rights reserved.
+            &copy; {new Date().getFullYear()} Doxa Community Temple. All rights reserved.
           </p>
         </div>
       </div>
