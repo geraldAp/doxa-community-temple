@@ -75,15 +75,21 @@ as HTML. All other lint findings fail the workflow.
 
 ## Automatic morning messages
 
-The Codex automation **Publish Doxa daily message** is paused while the Head
-Pastor's WhatsApp delivery source is being connected. The intended publication
-time is 06:00 Africa/Accra. See `docs/whatsapp-setup.md` for the local
-read-only receiver, pairing, and source-verification steps. Publish only the Head Pastor's exact supplied
+The Codex automation **Publish Doxa’s Patriarch’s PEN** is active at 06:00
+Africa/Accra daily. The personal WhatsApp receiver was linked and verified on
+21 October 2026; the first scheduled run is 22 October. Only incoming messages
+from the configured Head Pastor received between 03:00 and 06:00 (including
+the 06:00 minute) are eligible. They must follow his greeting, title, scripture
+with Bible reference, and reflection pattern. Long scripture passages with
+short reflections are accepted. Personal conversations and ambiguous messages
+must be skipped; multiple different matching messages require manual review.
+See `docs/whatsapp-setup.md` for the local read-only receiver, pairing, and
+source-verification steps. Publish only the Head Pastor's exact supplied
 messages. Never generate a substitute devotional, rewrite his words, or invent
 a message when none has arrived. Leave the existing website message in place
 when there is no new eligible message.
 
-This is a local automation: when enabled, it requires this Mac to be awake,
+This is a local automation: it requires this Mac to be awake,
 online, and running Codex. A Git commit or Vercel redeployment is not required
 for each Sanity content update.
 

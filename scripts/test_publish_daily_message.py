@@ -46,6 +46,13 @@ class PublisherChecks(unittest.TestCase):
             self.assertEqual(result["status"], "published")
             self.assertTrue((Path(directory) / ".daily-messages" / (self.today + "-previous.json")).exists())
 
+    def test_long_scripture_is_allowed_without_truncation(self):
+        long_message = "A long scripture passage. " * 1500
+        with patch.object(publisher, "current", return_value=self.doc), patch.object(publisher, "request") as request:
+            result = publisher.publish("test-token", long_message, self.today, dry_run=True)
+        self.assertEqual(result["words"], len(long_message.split()))
+        request.assert_not_called()
+
     def test_repeated_message_is_rejected(self):
         self.doc["dailyMessage"] = self.message
         with patch.object(publisher, "current", return_value=self.doc), patch.object(publisher, "request") as request:

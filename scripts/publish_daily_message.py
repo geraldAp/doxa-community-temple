@@ -16,6 +16,10 @@ BASE = "https://e9vdw5cx.api.sanity.io/v2025-01-27/data/"
 DOCUMENT_ID = "e12cc04b-e1b1-44e9-8947-27bae6252a06"
 
 
+class MessageAlreadyCurrent(ValueError):
+    """The exact source text is already published; no write is needed."""
+
+
 def read_token():
     token = os.environ.get("SANITY_WRITE_TOKEN", "").strip()
     if not token:
@@ -56,16 +60,16 @@ def publish(token, message, date, dry_run=False):
     today = datetime.now(ZoneInfo("Africa/Accra")).date().isoformat()
     if date != today:
         raise ValueError("Only today's message in Africa/Accra may be published.")
-    if not 50 <= len(message.split()) <= 800:
-        raise ValueError("Expected a complete devotional of 50–800 words.")
+    if not 50 <= len(message) <= 100000:
+        raise ValueError("Expected a complete message of 50–100,000 characters.")
     doc = current(token)
     published_date = doc.get("dailyMessageDate") or ""
     if not isinstance(published_date, str):
         raise ValueError("The existing message date is invalid; inspect Sanity before publishing.")
     if published_date >= date:
         return {"status": "already-published", "date": date}
-    if message.strip() == str(doc.get("dailyMessage", "")).strip():
-        raise ValueError("The proposed message repeats the current message.")
+    if message == doc.get("dailyMessage"):
+        raise MessageAlreadyCurrent("The exact message is already published.")
     if dry_run:
         return {"status": "dry-run", "date": date, "words": len(message.split())}
     archive = ROOT / ".daily-messages"
