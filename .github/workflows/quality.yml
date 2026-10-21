@@ -24,5 +24,6 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci --no-audit --no-fund
+      - run: python3 -m unittest discover -s scripts -p 'test_*.py'
       - run: npm run lint
       - run: npm run typecheck

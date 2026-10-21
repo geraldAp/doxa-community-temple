@@ -72,3 +72,34 @@ handlers, object indexing, and HTML string handling.
 `SiteMotion` has two documented inline exceptions for the HTML string heuristic:
 its values are existing DOM nodes and animation handles, never strings inserted
 as HTML. All other lint findings fail the workflow.
+
+## Automatic morning messages
+
+The Codex automation **Publish Doxa daily message** runs daily at 06:00
+Africa/Accra. It generates a fresh devotional, verifies its KJV quotation, then
+publishes to the existing Home Content document. It does not need Meta AI, a
+separate AI API key, a Git commit, or a Vercel redeployment for each message.
+This is a local automation: keep this Mac awake, online, and Codex running.
+The first scheduled generated message is 22 October 2026; the user-supplied
+message published on 21 October is preserved until then.
+
+The publishing script is `scripts/publish_daily_message.py`. Its credential is
+read from `SANITY_WRITE_TOKEN` or the ignored `.env.daily-message` file with
+owner-only permissions (600). Never commit, print, or copy that file into an
+automation prompt. Drafts and previous-message backups live in the ignored
+`.daily-messages/` directory. Create the directory before saving the first draft.
+
+The script refuses future/past publication dates, incomplete messages, exact
+repeats, and a second upload for the same Ghana date. It backs up the existing
+message, guards the patch with the document revision, updates only
+`dailyMessage` and `dailyMessageDate`, and verifies the saved text. A failed
+upload retains the last published message. A verification failure should be
+investigated before retrying, since the write might already have succeeded.
+
+To publish a church-prepared message instead, edit **Daily Message** in Sanity,
+set **Daily Message Date** to today's Ghana date, and publish. The automation
+will leave that day's prepared message in place. Pause the automation in Codex
+if the church wants to stop generated messages entirely.
+
+Read-only check: `python3 scripts/publish_daily_message.py --check`.
+Safeguard checks: `python3 -m unittest discover -s scripts -p 'test_*.py'`.

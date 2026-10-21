@@ -46,3 +46,8 @@ next-env.d.ts
 /.superdesign/tmp/
 /docs/previews/
 !.env.example
+
+# Local daily-message drafts and publication backups
+/.daily-messages/
+__pycache__/
+*.pyc

@@ -23,6 +23,13 @@ export const homeType = defineType({
         "The full message shown on the landing page. Separate paragraphs with blank lines. Publish changes to update the public website.",
     }),
     defineField({
+      name: "dailyMessageDate",
+      title: "Daily Message Date",
+      type: "date",
+      description:
+        "The date of the published message in Ghana. The morning publisher uses this to prevent duplicate updates.",
+    }),
+    defineField({
       name: "dailyVerse",
       title: "Legacy Daily Verse",
       type: "text",
