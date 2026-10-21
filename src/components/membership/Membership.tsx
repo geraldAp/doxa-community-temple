@@ -245,7 +245,7 @@ export default function Membership() {
                     <div className="space-y-3 pt-2">
                       <Label>I am a:</Label>
                       <RadioGroup
-                        onValueChange={(value) => setValue("status", value as "visitor" | "member", { shouldValidate: true })}
+                        onValueChange={(value) => { setValue("status", value as "visitor" | "member", { shouldValidate: true }); }}
                         className="grid grid-cols-2 gap-4"
                       >
                         <div>
@@ -293,7 +293,7 @@ export default function Membership() {
               <Card key={i} className="bg-muted/30 border-none">
                 <CardContent className="p-8">
                   <div className="flex justify-center mb-4 text-yellow-500">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
+                    {Array.from({ length: 5 }, (_, starIndex) => starIndex).map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
                   </div>
                   <p className="text-lg italic mb-6">"Joining this church family was the best decision I've made. The community is welcoming and the spiritual growth is real."</p>
                   <div className="font-bold">- Member Testimonial</div>

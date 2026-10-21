@@ -18,7 +18,7 @@ export default async function GivePage() {
         <section className="content-panel">
           <h2>Support the church.</h2>
           <p className="whitespace-pre-line">
-            {settings?.paymentInstructions ||
+            {settings?.paymentInstructions ??
               "Please contact the church team for current giving instructions."}
           </p>
           <a
@@ -31,7 +31,7 @@ export default async function GivePage() {
         <section className="content-panel">
           <h2>Give your time.</h2>
           <p>
-            {settings?.volunteerIntroText ||
+            {settings?.volunteerIntroText ??
               "We’d love to hear how you’d like to help. Speak with us about opportunities to serve in the church."}
           </p>
           <a

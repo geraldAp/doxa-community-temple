@@ -23,7 +23,7 @@ export function Accordion({ items }: AccordionProps) {
         >
           <button
             className="flex justify-between items-center w-full text-left font-semibold py-4 px-6 bg-white hover:bg-gray-50 transition duration-300"
-            onClick={() => setOpenIndex(openIndex === index ? null : index)}
+            onClick={() => { setOpenIndex(openIndex === index ? null : index); }}
           >
             <span>{item.question}</span>
             <ChevronDown

@@ -40,7 +40,7 @@ export default function Chatbot() {
     <>
       {/* Chatbot Trigger Button */}
       <Button
-        onClick={() => setIsChatOpen(true)}
+        onClick={() => { setIsChatOpen(true); }}
         className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg p-0"
         size="icon"
         aria-label="Open chat"
@@ -54,7 +54,7 @@ export default function Chatbot() {
           {/* Overlay */}
           <div
             className="absolute inset-0 bg-background/80 backdrop-blur-sm"
-            onClick={() => setIsChatOpen(false)}
+            onClick={() => { setIsChatOpen(false); }}
           />
 
           {/* Chat Window */}
@@ -65,7 +65,7 @@ export default function Chatbot() {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => setIsChatOpen(false)}
+                onClick={() => { setIsChatOpen(false); }}
                 className="h-8 w-8 rounded-full text-primary-foreground hover:bg-primary/80"
                 aria-label="Close chat"
               >

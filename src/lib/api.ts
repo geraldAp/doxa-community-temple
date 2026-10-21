@@ -1,3 +1,4 @@
+import type { EditorialImage, Article } from "./editorial";
 import { client } from "@/sanity/lib/client";
 import { AboutDocument } from "@/types/About";
 import { HomeDocument } from "@/types/Home";
@@ -5,7 +6,7 @@ import { groq } from "next-sanity";
 
 export async function getChurchHomePageInfo(): Promise<HomeDocument> {
   try {
-    const data: HomeDocument = await client.fetch(
+    const data = await client.fetch<HomeDocument>(
       groq`*[_type =='home'][0]{
       _id,
       heroImage,
@@ -27,7 +28,7 @@ export async function getChurchHomePageInfo(): Promise<HomeDocument> {
       {},
       {
         cache: "no-store",
-      }
+      },
     );
     return data;
   } catch (error) {
@@ -37,12 +38,12 @@ export async function getChurchHomePageInfo(): Promise<HomeDocument> {
 
 export async function getFaqs(): Promise<FAQ[]> {
   try {
-    const data = await client.fetch(
+    const data = await client.fetch<FAQ[]>(
       groq`*[_type == 'faq']{ _id,question,answer}`,
       {},
       {
         cache: "no-store",
-      }
+      },
     );
     return data;
   } catch (error) {
@@ -52,7 +53,7 @@ export async function getFaqs(): Promise<FAQ[]> {
 
 export async function getAboutPage(): Promise<AboutDocument> {
   try {
-    const data: AboutDocument = await client.fetch(
+    const data = await client.fetch<AboutDocument>(
       groq`*[_type == 'about'][0]{
         _id,
         ourStory,
@@ -66,7 +67,6 @@ export async function getAboutPage(): Promise<AboutDocument> {
         },
         serviceActivities
       }`,
-
     );
     return data;
   } catch (error) {
@@ -87,12 +87,12 @@ export const fetchGalleryPage = async (): Promise<ImagesArray> => {
       alt
     }
   }`;
-    const data = await client.fetch(
+    const data = await client.fetch<ImagesArray>(
       query,
       {},
       {
         cache: "no-store",
-      }
+      },
     );
     return data;
   } catch (error) {
@@ -102,12 +102,15 @@ export const fetchGalleryPage = async (): Promise<ImagesArray> => {
 
 export const fetchGiveSettings = async () => {
   try {
-    const data = await client.fetch(
+    const data = await client.fetch<{
+      paymentInstructions?: string;
+      volunteerIntroText?: string;
+    }>(
       groq`*[_type == "giveSettings"][0]{ paymentInstructions, volunteerIntroText }`,
       {},
-      { cache: "no-store" }
+      { cache: "no-store" },
     );
-    return data as { paymentInstructions?: string; volunteerIntroText?: string };
+    return data;
   } catch (error) {
     throw error;
   }
@@ -127,8 +130,12 @@ export const fetchPostsPaginated = async (page: number, limit: number) => {
         body[0..2]
       }
     }`;
-    const data = await client.fetch(query, {}, { cache: "no-store" });
-    return data as { total: number; items: Array<{ _id: string; title: string; slug: string; publishedAt: string; mainImage?: any; body?: unknown[] }> };
+    const data = await client.fetch<{ total: number; items: Article[] }>(
+      query,
+      {},
+      { cache: "no-store" },
+    );
+    return data;
   } catch (error) {
     throw error;
   }
@@ -145,7 +152,11 @@ export const fetchPostBySlug = async (slug: string) => {
       body,
       categories[]-> { title, slug }
     }`;
-    const data = await client.fetch(query, { slug }, { cache: "no-store" });
+    const data = await client.fetch<Article | null>(
+      query,
+      { slug },
+      { cache: "no-store" },
+    );
     return data;
   } catch (error) {
     throw error;
@@ -160,8 +171,16 @@ export const fetchGalleryAlbums = async () => {
       description,
       "cover": images[0].image
     }`;
-    const data = await client.fetch(query, {}, { cache: "no-store" });
-    return data as { _id: string; title: string; slug: { current: string }; description?: string; cover?: any }[];
+    const data = await client.fetch<
+      {
+        _id: string;
+        title: string;
+        slug: { current: string };
+        description?: string;
+        cover?: EditorialImage;
+      }[]
+    >(query, {}, { cache: "no-store" });
+    return data;
   } catch (error) {
     throw error;
   }
@@ -179,7 +198,13 @@ export const fetchGalleryAlbumBySlug = async (slug: string) => {
         alt
       }
     }`;
-    const data = await client.fetch(query, { slug }, { cache: "no-store" });
+    const data = await client.fetch<{
+      _id: string;
+      title: string;
+      slug: { current: string };
+      description?: string;
+      images: { image: EditorialImage; alt?: string }[];
+    } | null>(query, { slug }, { cache: "no-store" });
     return data;
   } catch (error) {
     throw error;

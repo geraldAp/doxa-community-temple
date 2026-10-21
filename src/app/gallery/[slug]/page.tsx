@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { getAlbum } from "@/lib/editorial";
 import { PageIntro } from "@/components/reusables/PageIntro";
 import { EditorialImage } from "@/components/reusables/EditorialImage";
-type Props = { params: Promise<{ slug: string }> };
+interface Props {
+  params: Promise<{ slug: string }>;
+}
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const album = await getAlbum((await params).slug);
   return { title: album?.title ?? "Gallery", description: album?.description };

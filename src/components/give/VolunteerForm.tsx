@@ -44,7 +44,6 @@ export function VolunteerForm({ introText }: { introText?: string }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
-      const json = await res.json()
       if (!res.ok) {
         toast({ title: "Submission failed", description: "Please check your details and try again." })
         return
@@ -147,7 +146,7 @@ export function VolunteerForm({ introText }: { introText?: string }) {
             <div className="space-y-2">
               <Label htmlFor="interest" className="font-semibold">Area of Interest</Label>
               <Select
-                onValueChange={(value) => setValue("interest", value, { shouldValidate: true })}
+                onValueChange={(value) => { setValue("interest", value, { shouldValidate: true }); }}
               >
                 <SelectTrigger className="h-12 bg-muted/30 border-border/60">
                   <SelectValue placeholder="Select an area" />

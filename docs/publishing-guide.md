@@ -59,3 +59,16 @@ The old components and API adapter remain in source for reference. Redesigned pu
 Production build and TypeScript validation passed. Browser checks covered all 13 public routes, one h1 and main landmark per page, image loading, missing article/event/album routes, and contact endpoint responses. Desktop and mobile checks covered the homepage at 1440px, 390px and 320px, including menu opening, Escape, focus return and horizontal overflow. Automated axe checks were run on the public pages, and contrast on gathering numbers was corrected.
 
 GROQ fixture checks covered the Accra midnight boundary, current and latest scripture selection, future scripture and article exclusion, ongoing and expired events, legacy events without typed dates, article excerpt generation, and CMS outage fallbacks. Real editorial entries should also receive a visual review when the church publishes them. A screen reader session and delivery of enquiries to a new backend were not part of this pass.
+
+## Quality checks
+
+Run `npm run lint`, `npm run typecheck`, and `npm run build` before pushing.
+The GitHub Quality workflow installs the locked dependencies before running the
+TypeScript and lint checks. ESLint uses the repository's `tsconfig.json`, including
+its `@/` aliases, rather than a generic analyzer project. The lint rules cover
+unsafe TypeScript operations, consistent declarations, null handling, async
+handlers, object indexing, and HTML string handling.
+
+`SiteMotion` has two documented inline exceptions for the HTML string heuristic:
+its values are existing DOM nodes and animation handles, never strings inserted
+as HTML. All other lint findings fail the workflow.

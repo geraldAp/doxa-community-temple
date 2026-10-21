@@ -16,7 +16,7 @@ export function EditorialImage({
   return (
     <Image
       src={urlFor(image)}
-      alt={image.alt || alt}
+      alt={image.alt ?? alt}
       fill
       priority={priority}
       sizes={sizes}

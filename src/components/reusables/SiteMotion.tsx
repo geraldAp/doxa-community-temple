@@ -19,21 +19,30 @@ export function SiteMotion() {
       navigator as Navigator & { connection?: DataConnection }
     ).connection;
     const completed = new WeakSet<Element>();
+    // eslint-disable-next-line xss/no-mixed-html -- Stores DOM elements and Animation handles, never HTML strings.
     const active = new Map<HTMLElement, Animation>();
     let observer: IntersectionObserver | undefined;
 
     const stop = () => {
       observer?.disconnect();
-      active.forEach((animation) => animation.cancel());
+      active.forEach((animation) => {
+        animation.cancel();
+      });
       active.clear();
     };
 
     const start = () => {
       stop();
-      if (preference.matches || connection?.saveData || document.hidden) return;
+      if (
+        preference.matches ||
+        (connection?.saveData ?? false) ||
+        document.hidden
+      )
+        return;
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
+            // eslint-disable-next-line xss/no-mixed-html -- IntersectionObserver returns an existing DOM element, not markup to inject.
             const target = entry.target as HTMLElement;
             if (!entry.isIntersecting || completed.has(target)) return;
             completed.add(target);

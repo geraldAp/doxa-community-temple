@@ -67,7 +67,7 @@ export function DonationForm({ paymentInstructions }: { paymentInstructions?: st
                     key={amount}
                     type="button"
                     variant={donationAmount === amount ? "default" : "outline"}
-                    onClick={() => setDonationAmount(amount)}
+                    onClick={() => { setDonationAmount(amount); }}
                     className="h-14 text-lg font-medium transition-all hover:scale-105"
                   >
                     GH₵{Number(amount).toLocaleString()}
@@ -86,7 +86,7 @@ export function DonationForm({ paymentInstructions }: { paymentInstructions?: st
                   min="1"
                   step="1"
                   value={donationAmount}
-                  onChange={(e) => setDonationAmount(e.target.value)}
+                  onChange={(e) => { setDonationAmount(e.target.value); }}
                   className="pl-14 h-14 text-lg bg-muted/30 border-border/60 focus:ring-primary/20"
                   placeholder="Enter amount"
                   required

@@ -56,7 +56,7 @@ export default function Gallery({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               className="relative h-64 cursor-pointer overflow-hidden rounded-lg shadow-lg"
-              onClick={() => setLightboxImage(image)}
+              onClick={() => { setLightboxImage(image); }}
             >
               <Image
                 src={image.image.asset.url || "/placeholder.svg"}
@@ -81,14 +81,14 @@ export default function Gallery({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
-            onClick={() => setLightboxImage(null)}
+            onClick={() => { setLightboxImage(null); }}
           >
             <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
               className="relative max-w-4xl max-h-[90vh] w-full h-full"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => { e.stopPropagation(); }}
             >
               <Image
                 src={lightboxImage.image.asset.url || "/placeholder.svg"}
@@ -98,7 +98,7 @@ export default function Gallery({
               />
               <button
                 className="absolute top-4 right-4 text-white bg-black/50 p-2 rounded-full hover:bg-black/75 transition-colors"
-                onClick={() => setLightboxImage(null)}
+                onClick={() => { setLightboxImage(null); }}
               >
                 <X className="w-6 h-6" />
               </button>

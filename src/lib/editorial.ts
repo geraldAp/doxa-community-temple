@@ -3,7 +3,7 @@ import { unstable_rethrow } from "next/navigation";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 export type EditorialImage = SanityImageSource & { alt?: string };
-export type ChurchEvent = {
+export interface ChurchEvent {
   _id: string;
   title: string;
   slug: string;
@@ -12,8 +12,8 @@ export type ChurchEvent = {
   venue?: string;
   description?: string;
   image?: EditorialImage;
-};
-export type Article = {
+}
+export interface Article {
   _id: string;
   title: string;
   slug: string;
@@ -21,15 +21,15 @@ export type Article = {
   mainImage?: EditorialImage;
   excerpt?: string;
   body?: unknown[];
-};
-export type Album = {
+}
+export interface Album {
   _id: string;
   title: string;
   slug: string;
   description?: string;
   cover?: EditorialImage;
   images?: { _key: string; image: EditorialImage; alt?: string }[];
-};
+}
 
 export const sanityConfigured = process.env.SANITY_DISABLED !== "1";
 

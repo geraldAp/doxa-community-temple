@@ -2,21 +2,25 @@ import Image from "next/image";
 import { Fragment, type ReactNode } from "react";
 import { urlFor } from "@/sanity/lib/image";
 
-type Span = { _key: string; text: string; marks?: string[] };
-type TextBlock = {
+interface Span {
+  _key: string;
+  text: string;
+  marks?: string[];
+}
+interface TextBlock {
   _key: string;
   _type: "block";
   style?: string;
   listItem?: string;
   children?: Span[];
   markDefs?: { _key: string; _type: string; href?: string }[];
-};
-type ImageBlock = {
+}
+interface ImageBlock {
   _key: string;
   _type: "image";
   asset?: { _ref: string; _type: "reference" };
   alt?: string;
-};
+}
 type ContentBlock = TextBlock | ImageBlock;
 
 function safeLink(href?: string): string | undefined {
@@ -69,7 +73,8 @@ export function PortableTextRenderer({ value }: { value?: unknown[] }) {
   const result: ReactNode[] = [];
   let index = 0;
   while (index < blocks.length) {
-    const block = blocks[index];
+    const block = blocks.at(index);
+    if (!block) break;
     if (block._type === "image") {
       if (block.asset)
         result.push(
@@ -94,7 +99,8 @@ export function PortableTextRenderer({ value }: { value?: unknown[] }) {
       const listType = block.listItem;
       const items: ReactNode[] = [];
       while (index < blocks.length) {
-        const item = blocks[index];
+        const item = blocks.at(index);
+        if (!item) break;
         if (item._type !== "block" || item.listItem !== listType) break;
         items.push(<li key={item._key}>{textContent(item)}</li>);
         index++;

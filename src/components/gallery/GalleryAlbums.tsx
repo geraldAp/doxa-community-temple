@@ -4,13 +4,13 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { urlFor } from "@/sanity/lib/image";
 
-type AlbumItem = {
+interface AlbumItem {
   _id: string;
   title: string;
   slug: { current: string };
   description?: string;
   cover?: any;
-};
+}
 
 export default function GalleryAlbums({ albums }: { albums: AlbumItem[] }) {
   return (

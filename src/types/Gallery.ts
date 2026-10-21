@@ -1,15 +1,15 @@
-type ImageAsset = {
+interface ImageAsset {
   _id: string;
   url: string;
-};
+}
 
-type Image = {
+interface Image {
   asset: ImageAsset;
-};
+}
 
-type ImageWithAlt = {
+interface ImageWithAlt {
   image: Image;
   alt: string;
-};
+}
 
 type ImagesArray = ImageWithAlt[];

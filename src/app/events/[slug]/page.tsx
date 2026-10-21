@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { getEvent, formatChurchDate } from "@/lib/editorial";
 import { PageIntro } from "@/components/reusables/PageIntro";
 import { EditorialImage } from "@/components/reusables/EditorialImage";
-type Props = { params: Promise<{ slug: string }> };
+interface Props {
+  params: Promise<{ slug: string }>;
+}
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const event = await getEvent((await params).slug);
   return { title: event?.title ?? "Event", description: event?.description };
