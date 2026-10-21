@@ -77,7 +77,8 @@ as HTML. All other lint findings fail the workflow.
 
 The Codex automation **Publish Doxa daily message** is paused while the Head
 Pastor's WhatsApp delivery source is being connected. The intended publication
-time is 06:00 Africa/Accra. Publish only the Head Pastor's exact supplied
+time is 06:00 Africa/Accra. See `docs/whatsapp-setup.md` for the local
+read-only receiver, pairing, and source-verification steps. Publish only the Head Pastor's exact supplied
 messages. Never generate a substitute devotional, rewrite his words, or invent
 a message when none has arrived. Leave the existing website message in place
 when there is no new eligible message.

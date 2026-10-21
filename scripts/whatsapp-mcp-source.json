@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/lharries/whatsapp-mcp",
+  "commit": "7d6a06dcdce1f01dfb24f60e1030d5efba9f3b88",
+  "whatsmeow": "v0.0.0-20261017175727-b2b1e71d45e2",
+  "goArchive": "go1.27.3.darwin-arm64.tar.gz",
+  "goArchiveSHA256": "dd3908cf20959d798c1e06ebe5b72213f0505ce01373b40ce3110975a6cd99c2",
+  "mcp": "1.26.0"
+}
