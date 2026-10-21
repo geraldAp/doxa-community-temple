@@ -18,7 +18,7 @@ const navigation = [
   { href: "/events", label: "What’s on" },
   { href: "/blog", label: "Articles" },
   { href: "/church-life", label: "Church life" },
-  { href: "/#daily-message", label: "Daily message" },
+  { href: "/#daily-message", label: "Doxa’s Patriarch’s PEN" },
 ];
 
 export function Header() {

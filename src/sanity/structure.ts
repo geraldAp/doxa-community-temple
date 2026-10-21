@@ -4,7 +4,7 @@ export const structure: StructureResolver = (S) =>
   S.list()
     .title("Doxa Content")
     .items([
-      S.documentTypeListItem("home").title("Daily Message & Home Photo"),
+      S.documentTypeListItem("home").title("Doxa’s Patriarch’s PEN & Home Photo"),
       S.documentTypeListItem("event").title("Events"),
       S.documentTypeListItem("post").title("Articles"),
       S.documentTypeListItem("galleryAlbum").title("Gallery Albums"),

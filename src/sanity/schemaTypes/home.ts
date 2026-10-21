@@ -17,14 +17,14 @@ export const homeType = defineType({
     }),
     defineField({
       name: "dailyMessage",
-      title: "Daily Message",
+      title: "Doxa’s Patriarch’s PEN",
       type: "text",
       description:
-        "The full message shown on the landing page. Separate paragraphs with blank lines. Publish changes to update the public website.",
+        "The Head Pastor’s full message shown on the landing page as Doxa’s Patriarch’s PEN. Separate paragraphs with blank lines. Publish changes to update the public website.",
     }),
     defineField({
       name: "dailyMessageDate",
-      title: "Daily Message Date",
+      title: "Patriarch’s PEN Message Date",
       type: "date",
       description:
         "The date of the published message in Ghana. The morning publisher uses this to prevent duplicate updates.",
@@ -35,7 +35,7 @@ export const homeType = defineType({
       type: "text",
       readOnly: true,
       description:
-        "Retained for reference; the public site displays Daily Message instead.",
+        "Retained for reference; the public site displays Doxa’s Patriarch’s PEN instead.",
     }),
     defineField({
       name: "vision",

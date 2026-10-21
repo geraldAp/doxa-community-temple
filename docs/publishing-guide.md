@@ -6,7 +6,7 @@ The redesigned website separates permanent church identity from editorial publis
 
 Update `src/content/church.ts` for mission, vision, objectives, approved beliefs, history and leadership. Mission and vision now follow the two handwritten photographs supplied by the church on 20 October 2026, replacing the earlier Sanity wording. Grammar, capitalization and punctuation were lightly normalized; the vision’s phrase “Christ Gospel” is preserved as written. The five objectives came from the publicly published Sanity about document. Objectives are presented as objectives. The placeholder “Rev. John Doe” profile was not migrated.
 
-Update `src/config/church.ts` for service times, phone, address, map and official social links. The church supplied Sunday 8:00–11:00 AM and Wednesday and Friday 7:00–8:30 PM, Adamrobe (Obama Park), Oyibi, and +233 55 388 5938. Tuesday 11:00 AM–4:00 PM and Friday “open 24 hours” were not treated as worship gatherings. Do not reintroduce the conflicting times in legacy documents.
+Update `src/config/church.ts` for service times, phone, address, map and official social links. The church supplied Sunday 8:00–11:00 AM and Wednesday Doxa Life Word and Friday Power and Glory, both 7:00–8:30 PM, Adamrobe (Obama Park), Oyibi, and +233 55 388 5938. Tuesday 11:00 AM–4:00 PM and Friday “open 24 hours” were not treated as worship gatherings. Do not reintroduce the conflicting times in legacy documents.
 
 The carried-over homepage photograph came from the old website's public Sanity hero asset. It does not establish that the pictured people are Doxa members. Replace it with church-owned photography when available. A genuine church logo and approved leadership portraits remain outstanding.
 
@@ -14,11 +14,11 @@ The carried-over homepage photograph came from the old website's public Sanity h
 
 Open `/studio` and sign in with an account that has access to the church's Sanity project. The public project identifier is `e9vdw5cx`, dataset `production`; environment variables can override these public defaults. A personal write token is not part of the browser configuration.
 
-### Daily message
+### Doxa’s Patriarch’s PEN
 
-The landing page reads the existing `dailyMessage` text from the published `home` document. In Studio, open **Daily Message & Home Photo**, edit **Daily Message**, and publish. Blank lines separate paragraphs on the public site. This uses the church's existing message; it does not require a new scripture document, verse reference or Bible translation field.
+The landing page reads the existing `dailyMessage` text from the published `home` document. In Studio, open **Doxa’s Patriarch’s PEN & Home Photo**, edit **Doxa’s Patriarch’s PEN**, and publish. Blank lines separate paragraphs on the public site. This uses the church's existing message; it does not require a new scripture document, verse reference or Bible translation field.
 
-The **Daily message** section stays visible directly below the welcome/directions strip. Header and footer links jump to `/#daily-message`. It displays the complete published message without assigning a new date or claiming that an older message was published today. A missing message or CMS outage shows a short availability notice instead of an invented verse.
+The **Doxa’s Patriarch’s PEN** section stays visible directly below the welcome/directions strip. Header and footer links jump to `/#daily-message`. It displays the complete published message without assigning a new date or claiming that an older message was published today. A missing message or CMS outage shows a short availability notice instead of an invented verse.
 
 The unused `dailyScripture` type remains under Legacy Content for reference. No production documents were changed or deleted for this switch.
 
@@ -75,13 +75,16 @@ as HTML. All other lint findings fail the workflow.
 
 ## Automatic morning messages
 
-The Codex automation **Publish Doxa daily message** runs daily at 06:00
-Africa/Accra. It generates a fresh devotional, verifies its KJV quotation, then
-publishes to the existing Home Content document. It does not need Meta AI, a
-separate AI API key, a Git commit, or a Vercel redeployment for each message.
-This is a local automation: keep this Mac awake, online, and Codex running.
-The first scheduled generated message is 22 October 2026; the user-supplied
-message published on 21 October is preserved until then.
+The Codex automation **Publish Doxa daily message** is paused while the Head
+Pastor's WhatsApp delivery source is being connected. The intended publication
+time is 06:00 Africa/Accra. Publish only the Head Pastor's exact supplied
+messages. Never generate a substitute devotional, rewrite his words, or invent
+a message when none has arrived. Leave the existing website message in place
+when there is no new eligible message.
+
+This is a local automation: when enabled, it requires this Mac to be awake,
+online, and running Codex. A Git commit or Vercel redeployment is not required
+for each Sanity content update.
 
 The publishing script is `scripts/publish_daily_message.py`. Its credential is
 read from `SANITY_WRITE_TOKEN` or the ignored `.env.daily-message` file with
@@ -96,10 +99,10 @@ message, guards the patch with the document revision, updates only
 upload retains the last published message. A verification failure should be
 investigated before retrying, since the write might already have succeeded.
 
-To publish a church-prepared message instead, edit **Daily Message** in Sanity,
-set **Daily Message Date** to today's Ghana date, and publish. The automation
-will leave that day's prepared message in place. Pause the automation in Codex
-if the church wants to stop generated messages entirely.
+To publish the Head Pastor's message manually, edit **Doxa’s Patriarch’s PEN**
+in Sanity, set **Patriarch’s PEN Message Date** to its Ghana publication date,
+and publish. The underlying `dailyMessage` field and `/#daily-message` links
+are retained so existing content and bookmarks continue to work.
 
 Read-only check: `python3 scripts/publish_daily_message.py --check`.
 Safeguard checks: `python3 -m unittest discover -s scripts -p 'test_*.py'`.

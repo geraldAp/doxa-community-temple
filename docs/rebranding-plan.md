@@ -109,9 +109,9 @@ The existing `STYLE_GUIDE.md` describes the current implementation. Revise it af
 | Giving instructions                                                        | Existing controlled Sanity `giveSettings`               | Restrict edits to appropriate staff and verify the published destination                                                |
 | Form submissions                                                           | Agreed delivery or storage service                      | Success means the destination has accepted the submission; Sanity editorial documents are not the default enquiry inbox |
 
-### Daily message behaviour
+### Doxa’s Patriarch’s PEN behaviour
 
-The landing page shows the existing published `home.dailyMessage` from Sanity directly below the welcome strip. Header and footer Daily message links jump to the section. Preserve the full message and paragraph breaks. Do not assign today's date to an older message or add a fallback verse. If no message is available, show an availability notice. Studio exposes the existing home document under Daily Message & Home Photo.
+The landing page shows the existing published `home.dailyMessage` from Sanity directly below the welcome strip. Header and footer Doxa’s Patriarch’s PEN links jump to the section. Preserve the full message and paragraph breaks. Do not assign today's date to an older message or add a fallback verse. If no message is available, show an availability notice. Studio exposes the existing home document under Doxa’s Patriarch’s PEN & Home Photo.
 
 ### Events and articles
 

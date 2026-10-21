@@ -15,7 +15,7 @@ export function DailyMessage({ message }: { message: string | null }) {
           id="daily-message-heading"
           className="!text-3xl font-medium tracking-tight"
         >
-          Daily message
+          Doxa’s Patriarch’s PEN
         </h2>
         <div className="space-y-5 text-base leading-relaxed text-white/95 md:text-lg">
           {paragraphs.length ? (
@@ -26,7 +26,7 @@ export function DailyMessage({ message }: { message: string | null }) {
             ))
           ) : (
             <p>
-              The daily message is unavailable right now. Please check back
+              The latest message is unavailable right now. Please check back
               later.
             </p>
           )}

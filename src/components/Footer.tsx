@@ -28,7 +28,7 @@ export function Footer() {
           <nav aria-label="Connect">
             <h2>Connect</h2>
             <Link href="/blog">Articles & reflections</Link>
-            <Link href="/#daily-message">Daily message</Link>
+            <Link href="/#daily-message">Doxa’s Patriarch’s PEN</Link>
             <Link href="/membership">Membership</Link>
             <Link href="/give">Give & volunteer</Link>
             <Link href="/contact">Contact</Link>
