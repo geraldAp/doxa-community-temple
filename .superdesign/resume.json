@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "/": {
+      "targetKind": "existing-ui",
+      "projectId": "2be4704a-df44-48b8-b823-ef425a8a4beb",
+      "baselineDraftId": "0d44c574-84cc-4d11-83bd-1fe5ff45409e",
+      "activeDraftId": "0d44c574-84cc-4d11-83bd-1fe5ff45409e",
+      "designSystemPath": ".superdesign/design-system.md",
+      "referenceIds": [
+        "1c6af4a5-7bdb-4249-b8fc-3aa39c8db1d1"
+      ],
+      "contextFiles": [
+        ".superdesign/design-system.md",
+        ".superdesign/homepage-styles.css",
+        "src/components/home/HomePage.tsx",
+        "src/components/Header.tsx",
+        "src/components/Footer.tsx",
+        "src/components/reusables/EditorialImage.tsx",
+        "src/content/church.ts",
+        "src/config/church.ts",
+        "tailwind.config.ts"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "89e5bef421288b7a21849b92ce8f0eaf014ff42ed0fa5d59f7731b5642bb0578",
+        ".superdesign/homepage-styles.css": "bc14d0e316bd0a088d54d1044140631d28dba834617632ea251ccca3ef44017a",
+        "src/components/home/HomePage.tsx": "32e4a0ac58dd0dc0faeeca1b07b9aebfca4f6f3a2981550f680d3d2f826e3812",
+        "src/components/Header.tsx": "4fcfdf9e6a752f2a488491b693cea914eeeb25b488fe438c0b414afac01b5801",
+        "src/components/Footer.tsx": "7db120581cd3e7b5eb53ff4c9826c034eeded96e9aa6630b5b4cae17a3e9bd88",
+        "src/components/reusables/EditorialImage.tsx": "f714ed46a2f50176b2ac9d272acc2962cb3f34802f7d94e73eff144c64ca8e05",
+        "src/content/church.ts": "458861ae36c01a8001f92530f43abf50cfd50c1d480d3743ecf98f49798df14f",
+        "src/config/church.ts": "f56c9db37aeda35fd17eb38e278b8926efc77063b34adc50820bbdcc4d1786b7",
+        "tailwind.config.ts": "c7662143fac1440774fbaade7c766b594f1086c61d74aa3f61c86f94cdba82ff"
+      },
+      "components": [
+        {
+          "name": "NavBar",
+          "id": "1139779f-9097-444b-9551-3d0976918935",
+          "sourcePath": "src/components/Header.tsx",
+          "currentVersion": 2
+        },
+        {
+          "name": "Footer",
+          "id": "551822da-6794-41d3-a49a-aef495d3619f",
+          "sourcePath": "src/components/Footer.tsx",
+          "currentVersion": 3
+        }
+      ],
+      "drafts": {
+        "0d44c574-84cc-4d11-83bd-1fe5ff45409e": {
+          "title": "Doxa Church Homepage",
+          "visualDirection": "Flat Chancelle-inspired surfaces, tightly spaced Arial headings inspired by The House, no eyebrow labels; reproduction of the implemented homepage",
+          "currentVersion": 1
+        }
+      },
+      "updatedAt": "2026-10-20T15:46:41.510456+00:00"
+    }
+  }
+}

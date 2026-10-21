@@ -11,8 +11,10 @@ import { faqType } from "./faqType";
 import { aboutType } from "./about";
 import { galleryAlbumType } from "./galleryAlbum";
 import { giveSettingsType } from "./giveSettings";
+import { dailyScriptureType } from "./dailyScripture";
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    dailyScriptureType,
     blockContentType,
     homeType,
     aboutType,

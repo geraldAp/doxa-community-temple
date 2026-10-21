@@ -1,126 +1,156 @@
 import Image from "next/image";
+import { Fragment, type ReactNode } from "react";
 import { urlFor } from "@/sanity/lib/image";
 
-type Block = {
+type Span = { _key: string; text: string; marks?: string[] };
+type TextBlock = {
   _key: string;
   _type: "block";
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-  listItem?: "bullet";
-  children?: Array<{
-    _key: string;
-    _type: "span";
-    text: string;
-    marks?: string[];
-  }>;
-  markDefs?: Array<{
-    _key: string;
-    _type: "link";
-    href: string;
-  }>;
+  style?: string;
+  listItem?: string;
+  children?: Span[];
+  markDefs?: { _key: string; _type: string; href?: string }[];
 };
-
 type ImageBlock = {
   _key: string;
   _type: "image";
-  asset?: any;
+  asset?: { _ref: string; _type: "reference" };
   alt?: string;
 };
+type ContentBlock = TextBlock | ImageBlock;
+
+function safeLink(href?: string): string | undefined {
+  if (!href) return;
+  if (href.startsWith("/") && !href.startsWith("//")) return href;
+  if (href.startsWith("#")) return href;
+  try {
+    const parsed = new URL(href);
+    if (["https:", "http:", "mailto:", "tel:"].includes(parsed.protocol))
+      return href;
+  } catch {
+    return;
+  }
+}
+
+function textContent(block: TextBlock) {
+  return block.children?.map((child) => {
+    let content: ReactNode = child.text;
+    for (const mark of child.marks ?? []) {
+      if (mark === "strong") content = <strong>{content}</strong>;
+      else if (mark === "em") content = <em>{content}</em>;
+      else {
+        const href = safeLink(
+          block.markDefs?.find(
+            (def) => def._key === mark && def._type === "link",
+          )?.href,
+        );
+        if (href)
+          content = (
+            <a href={href} className="underline underline-offset-4">
+              {content}
+            </a>
+          );
+      }
+    }
+    return <Fragment key={child._key}>{content}</Fragment>;
+  });
+}
 
 export function PortableTextRenderer({ value }: { value?: unknown[] }) {
-  if (!value || !Array.isArray(value) || value.length === 0) {
-    return <div className="text-gray-500">No content available.</div>;
-  }
-
-  const renderMarks = (text: string, marks: string[] = []) => {
-    let output = <>{text}</>;
-    marks.forEach((mark) => {
-      if (mark === "strong") {
-        output = <strong>{output}</strong>;
-      }
-      if (mark === "em") {
-        output = <em>{output}</em>;
-      }
-    });
-    return output;
-  };
-
-  const renderChildren = (block: Block) => {
-    const linkMap = new Map<string, string>();
-    block.markDefs?.forEach((def) => {
-      if (def._type === "link") {
-        linkMap.set(def._key, def.href);
-      }
-    });
-    return (block.children ?? []).map((child) => {
-      const hasLink = (child.marks ?? []).find((m) => linkMap.has(m));
-      const content = renderMarks(child.text, child.marks);
-      if (hasLink) {
-        const href = linkMap.get(hasLink)!;
-        return (
-          <a key={child._key} href={href} className="text-primary underline">
-            {content}
-          </a>
-        );
-      }
-      return <span key={child._key}>{content}</span>;
-    });
-  };
-
-  const renderBlock = (block: Block) => {
-    const content = renderChildren(block);
-    switch (block.style) {
-      case "h1":
-        return <h1 className="text-3xl font-bold mb-4">{content}</h1>;
-      case "h2":
-        return <h2 className="text-2xl font-semibold mb-3">{content}</h2>;
-      case "h3":
-        return <h3 className="text-xl font-semibold mb-2">{content}</h3>;
-      case "h4":
-        return <h4 className="text-lg font-semibold mb-2">{content}</h4>;
-      case "blockquote":
-        return (
-          <blockquote className="border-l-4 pl-4 italic text-gray-700 mb-4">
-            {content}
-          </blockquote>
-        );
-      default:
-        if (block.listItem === "bullet") {
-          return <li className="ml-6 list-disc">{content}</li>;
-        }
-        return <p className="mb-4 leading-relaxed">{content}</p>;
-    }
-  };
-
-  return (
-    <div>
-      {value.map((item) => {
-        const block = item as any;
-        if (block?._type === "image") {
-          const img = block as ImageBlock;
-          const src = urlFor(img) || "";
-          return (
-            <figure key={img._key} className="my-6">
-              <Image
-                src={src}
-                alt={img.alt ?? ""}
-                width={1200}
-                height={800}
-                className="rounded-lg object-cover w-full h-auto"
-                loading="lazy"
-              />
-              {img.alt && (
-                <figcaption className="text-sm text-gray-500 mt-2">
-                  {img.alt}
-                </figcaption>
-              )}
-            </figure>
-          );
-        }
-        if (block?._type === "block") {
-          return <div key={block._key}>{renderBlock(block as Block)}</div>;
-        }
-        return null;
-      })}
-    </div>
+  if (!Array.isArray(value)) return null;
+  const blocks = value.filter((item): item is ContentBlock =>
+    Boolean(
+      item &&
+      typeof item === "object" &&
+      "_type" in item &&
+      (item._type === "block" || item._type === "image"),
+    ),
   );
+  const result: ReactNode[] = [];
+  let index = 0;
+  while (index < blocks.length) {
+    const block = blocks[index];
+    if (block._type === "image") {
+      if (block.asset)
+        result.push(
+          <figure key={block._key} className="my-8">
+            <Image
+              src={urlFor(block)}
+              alt={block.alt ?? ""}
+              width={1200}
+              height={800}
+              sizes="(max-width: 768px) 100vw, 780px"
+              className="w-full h-auto"
+            />
+            {block.alt && (
+              <figcaption className="text-sm mt-3">{block.alt}</figcaption>
+            )}
+          </figure>,
+        );
+      index++;
+      continue;
+    }
+    if (block.listItem) {
+      const listType = block.listItem;
+      const items: ReactNode[] = [];
+      while (index < blocks.length) {
+        const item = blocks[index];
+        if (item._type !== "block" || item.listItem !== listType) break;
+        items.push(<li key={item._key}>{textContent(item)}</li>);
+        index++;
+      }
+      result.push(
+        listType === "number" ? (
+          <ol key={block._key} className="list-decimal pl-6 mb-6 space-y-2">
+            {items}
+          </ol>
+        ) : (
+          <ul key={block._key} className="list-disc pl-6 mb-6 space-y-2">
+            {items}
+          </ul>
+        ),
+      );
+      continue;
+    }
+    const text = textContent(block);
+    switch (block.style) {
+      // The article title already owns the page's h1.
+      case "h1":
+      case "h2":
+        result.push(<h2 key={block._key}>{text}</h2>);
+        break;
+      case "h3":
+        result.push(
+          <h3 key={block._key} className="text-2xl font-medium mt-8 mb-4">
+            {text}
+          </h3>,
+        );
+        break;
+      case "h4":
+        result.push(
+          <h4 key={block._key} className="text-xl font-medium mt-6 mb-3">
+            {text}
+          </h4>,
+        );
+        break;
+      case "blockquote":
+        result.push(
+          <blockquote
+            key={block._key}
+            className="border-l-2 border-primary pl-6 my-6"
+          >
+            {text}
+          </blockquote>,
+        );
+        break;
+      default:
+        result.push(
+          <p key={block._key} className="mb-6">
+            {text}
+          </p>,
+        );
+    }
+    index++;
+  }
+  return <>{result}</>;
 }

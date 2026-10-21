@@ -1,18 +1,12 @@
-import { createGoogleGenerativeAI } from "@ai-sdk/google";
-import { streamText } from "ai";
-import { SYSTEM_PROMPT } from "@/util/systemPrompt";
+import { NextResponse } from "next/server";
+import { churchDetails } from "@/config/church";
 
-export async function POST(req: Request) {
-  const { messages } = await req.json();
-
-  const google = createGoogleGenerativeAI({
-    // custom settings
-    apiKey: process.env.GOOGLE_AI_API_KEY,
-  });
-  const result = streamText({
-    model: google("gemini-1.5-pro-latest", {}),
-    messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
-  });
-
-  return result.toDataStreamResponse();
+// The old assistant used conflicting times and a 2025 event calendar.
+export async function POST() {
+  return NextResponse.json(
+    {
+      error: `Please contact Doxa directly on ${churchDetails.phone} for current church information.`,
+    },
+    { status: 503 },
+  );
 }

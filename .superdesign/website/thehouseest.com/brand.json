@@ -1,0 +1,485 @@
+{
+  "meta": {
+    "url": "https://www.thehouseest.com/",
+    "title": "The House Established | Welcoming Church in Waimanalo & Honolulu, HI",
+    "description": "Join The House Established in Waimanalo and Honolulu, HI, for inspiring worship, engaging ministries, and a welcoming community where everyone can grow in faith and encounter Jesus.",
+    "language": "en",
+    "viewport": "width=device-width, initial-scale=1",
+    "themeColor": null,
+    "ogImage": null,
+    "ogTitle": "The House Established | Welcoming Church in Waimanalo & Honolulu, HI",
+    "ogDescription": "Join The House Established in Waimanalo and Honolulu, HI, for inspiring worship, engaging ministries, and a welcoming community where everyone can grow in faith and encounter Jesus."
+  },
+  "theme": {
+    "mode": "light",
+    "bodyBackground": "#ffffff",
+    "isDark": false,
+    "confidence": 0.9
+  },
+  "brand": {
+    "name": "Get Directions",
+    "favicon": {
+      "href": "https://media.thechurchcoassets.com/accounts/7028/2f90d24a-da29-4e5f-9a00-d57e49a8bca0-/house-black-logo.png",
+      "type": null
+    }
+  },
+  "colors": {
+    "dominant": [
+      {
+        "hex": "#e5e7eb",
+        "ratio": 0.66
+      },
+      {
+        "hex": "#000000",
+        "ratio": 0.169
+      },
+      {
+        "hex": "#292929",
+        "ratio": 0.091
+      },
+      {
+        "hex": "#242424",
+        "ratio": 0.045
+      },
+      {
+        "hex": "#ffffff",
+        "ratio": 0.01
+      },
+      {
+        "hex": "#d8d8d8",
+        "ratio": 0.008
+      },
+      {
+        "hex": "#f7f7f7",
+        "ratio": 0.004
+      },
+      {
+        "hex": "#f1d044",
+        "ratio": 0.004
+      },
+      {
+        "hex": "#b9b9b9",
+        "ratio": 0.002
+      },
+      {
+        "hex": "#211a2d",
+        "ratio": 0.002
+      },
+      {
+        "hex": "#f6f5f5",
+        "ratio": 0.002
+      },
+      {
+        "hex": "#333333",
+        "ratio": 0.001
+      },
+      {
+        "hex": "#ff0000",
+        "ratio": 0.001
+      },
+      {
+        "hex": "#656565",
+        "ratio": 0
+      },
+      {
+        "hex": "#ffc600",
+        "ratio": 0
+      }
+    ],
+    "palette": [
+      {
+        "hex": "#e5e7eb",
+        "role": "background",
+        "source": "computed"
+      },
+      {
+        "hex": "#000000",
+        "role": "foreground",
+        "source": "computed"
+      },
+      {
+        "hex": "#ff0000",
+        "role": "primary",
+        "source": "heuristic"
+      },
+      {
+        "hex": "#ffc600",
+        "role": "secondary",
+        "source": "heuristic"
+      },
+      {
+        "hex": "#f1d044",
+        "role": "accent",
+        "source": "heuristic"
+      },
+      {
+        "hex": "#b9b9b9",
+        "role": "neutral",
+        "source": "heuristic"
+      }
+    ],
+    "cssVariables": {
+      "--color-tcc-darktext": "#010101",
+      "--tertiary-color-bg-light": "#505050",
+      "--primary-color-bg-light": "#ffd233",
+      "--theme-input-border": "#000000",
+      "--color-basealt-200": "#e5e7eb",
+      "--color-tcc-altlight": "#101116",
+      "--color-primary-400": "#415269",
+      "--secondary-color-bg-dark": "#c8c6c2",
+      "--color-primary-500": "#2a3d57",
+      "--primary-color-text": "#f6f5f5",
+      "--color-tcc-secondarytext": "#fff",
+      "--tw-gradient-from": "#000000",
+      "--color-white": "#fff",
+      "--color-basealt-50": "#f9fafb",
+      "--tw-gradient-to": "#000000",
+      "--color-tcc-base": "#05060d",
+      "--color-basealt-500": "#6b7280",
+      "--color-tcc-primarydark": "#fff",
+      "--tertiary-color-bg": "#242424",
+      "--color-darkbase-900": "#0f172a",
+      "--color-tcc-altdark": "#2b2d37",
+      "--alt-color-bg-light": "#f9f9f9",
+      "--color-warning-50": "#fefce8",
+      "--tertiary-color-bg-dark": "#1d1d1d",
+      "--color-basealt-300": "#d1d5db",
+      "--color-error-50": "#fef2f2",
+      "--color-chart-1": "#2f8fff",
+      "--color-tcc-warning": "#d08800",
+      "--color-error-600": "#dc2626",
+      "--color-basealt-600": "#4b5563",
+      "--color-tcc-info": "#165dfc",
+      "--alt-color-bg": "#f7f7f7",
+      "--color-brandultimate-100": "#f3e8ff",
+      "--color-brandprimary": "#122744",
+      "--color-tcc-alttext": "#fff",
+      "--color-brandprimaryaccent": "#1545d3",
+      "--tw-gradient-via": "#000000",
+      "--color-success-500": "#22c55e",
+      "--color-tcc-dark": "#fff",
+      "--color-brandprimarylight": "#8ac2dd",
+      "--color-brandultimate-200": "#e9d5ff",
+      "--color-basealt-100": "#f3f4f6",
+      "--color-primaryaccent-600": "#1545d3",
+      "--color-tcc-primarytext": "#0f172a",
+      "--color-darktext-400": "#9ca3af",
+      "--color-chart-6": "#f5c400",
+      "--color-basealt-700": "#374151",
+      "--primary-color-bg-dark": "#cc9f00",
+      "--tertiary-color-text": "#f6f5f5",
+      "--theme-shadow-sm": "#000000",
+      "--alt-color-text": "#242424",
+      "--primary-color-bg": "#ffc600",
+      "--base-color-text": "#242424",
+      "--color-tcc-alt": "#101116",
+      "--color-basealt-800": "#1f2937",
+      "--color-primarylight-400": "#e8f3f8",
+      "--secondary-color-bg-light": "#fbf9f5",
+      "--color-black": "#000",
+      "--color-chart-3": "#00c48c",
+      "--color-chart-4": "#ff7a2f",
+      "--color-error-800": "#991b1b",
+      "--color-warning-500": "#eab308",
+      "--color-base": "#fff",
+      "--color-primarylight-100": "#f5fafd",
+      "--color-primaryaccent-400": "#446adc",
+      "--theme-shadow-lg": "#000000",
+      "--base-color-bg": "#f6f5f5",
+      "--color-darkbase-700": "#334155",
+      "--color-error-400": "#f87171",
+      "--color-tcc-error": "#e7000b",
+      "--color-brandultimate-300": "#d8b4fe",
+      "--theme-shadow": "#000000",
+      "--color-darktext-500": "#6b7280",
+      "--tw-ring-offset-color": "#fff",
+      "--color-branddark": "#171c22",
+      "--color-tcc-success": "#00a73d",
+      "--color-basealt-400": "#9ca3af",
+      "--color-success-800": "#166534",
+      "--base-color-bg-light": "#f8f7f7",
+      "--color-darkbase-200": "#e2e8f0",
+      "--color-info-600": "#2563eb",
+      "--secondary-color-bg": "#faf7f2",
+      "--color-error-700": "#b91c1c",
+      "--color-tcc-secondary": "#3bb0f2",
+      "--color-brandaccent": "#e0fe69",
+      "--color-brandultimate-500": "#a855f7",
+      "--alt-color-bg-dark": "#c6c6c6",
+      "--color-darkbase-950": "#020617",
+      "--color-chart-2": "#ff4d6d",
+      "--color-tcc-primary": "#fff",
+      "--color-tcc-basetext": "#fff",
+      "--color-tcc-ultimate": "#a855f7",
+      "--color-primary-600": "#122744",
+      "--color-success-100": "#dcfce7",
+      "--color-brandbase": "#f7f5f2",
+      "--color-chart-7": "#8b96a8",
+      "--color-brandultimate-400": "#c084fc",
+      "--color-primarylight-200": "#f4fafc",
+      "--color-darkbase-800": "#1e293b",
+      "--color-warning-600": "#ca8a04",
+      "--color-primary-100": "#8993a2",
+      "--color-tcc-basetextlight": "#99a1af",
+      "--color-error-500": "#ef4444",
+      "--color-brandultimate-600": "#9333ea",
+      "--base-color-bg-dark": "#c5c4c4",
+      "--color-warning-100": "#fef9c3",
+      "--color-warning-700": "#a16207",
+      "--color-darktext-100": "#f3f4f6",
+      "--color-basealt-900": "#111827",
+      "--color-darkbase-600": "#475569",
+      "--color-brandultimate-50": "#faf5ff",
+      "--color-success-600": "#16a34a",
+      "--secondary-color-text": "#242424",
+      "--color-darktext-300": "#d1d5db",
+      "--color-primaryaccent-100": "#8aa2e9",
+      "--color-tcc-primarylight": "#fff",
+      "--color-darktext-200": "#e5e7eb",
+      "--theme-shadow-md": "#000000",
+      "--color-chart-5": "#9b6dff",
+      "--color-tcc-baselight": "#05060d",
+      "--color-tcc-basedark": "#05060d",
+      "--rcp-background-color": "#121212",
+      "--rcp-field-input-color": "#fff",
+      "--rcp-field-input-border-color": "#242424",
+      "--yellow": "#f1d044",
+      "--ink": "#292929"
+    },
+    "gradients": [
+      {
+        "css": "linear-gradient(rgba(255, 0, 0, 0), rgb(0, 0, 0))",
+        "sampleColors": [
+          "#ff0000",
+          "#000000"
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "status": "confirmed",
+    "reason": null,
+    "best": {
+      "selector": "img",
+      "href": "https://res.cloudinary.com/thechurchcov3production/image/fetch/f_auto/https://media.thechurchcoassets.com/accounts/7028/f941506e-b9aa-46a0-a0b8-7d40f533d7dd-/The-House-Logo_512x512-Black-horizontal__largepreview__.webp",
+      "type": "webp",
+      "width": 2200,
+      "height": 2200,
+      "svgContent": null,
+      "colors": [],
+      "isLight": false,
+      "isDark": false,
+      "needsDarkBackground": false,
+      "needsLightBackground": false,
+      "ownership": "platform-cdn",
+      "headerScoped": true,
+      "variant": "dark",
+      "brandNameOnLogo": "THE HOUSE",
+      "uploadedUrl": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/de8dfc47-2e12-4184-8f07-0f577fe292f3/assets/784733a3-e6ff-483a-a8a7-effc4651d8a4.png"
+    },
+    "candidates": [
+      {
+        "selector": "img",
+        "href": "https://res.cloudinary.com/thechurchcov3production/image/fetch/f_auto/https://media.thechurchcoassets.com/accounts/7028/f941506e-b9aa-46a0-a0b8-7d40f533d7dd-/The-House-Logo_512x512-Black-horizontal__largepreview__.webp",
+        "type": "webp",
+        "width": 2200,
+        "height": 2200,
+        "svgContent": null,
+        "colors": [],
+        "isLight": false,
+        "isDark": false,
+        "needsDarkBackground": false,
+        "needsLightBackground": false,
+        "ownership": "platform-cdn",
+        "headerScoped": true
+      },
+      {
+        "selector": "img",
+        "href": "https://res.cloudinary.com/thechurchcov3production/image/fetch/f_auto/https://media.thechurchcoassets.com/accounts/7028/f726e6c3-dd35-4cc2-8fbe-3eb1e50a0869-/The-House-Logo-Black__largepreview__.webp",
+        "type": "webp",
+        "width": 2200,
+        "height": 491,
+        "svgContent": null,
+        "colors": [],
+        "isLight": false,
+        "isDark": false,
+        "needsDarkBackground": false,
+        "needsLightBackground": false,
+        "ownership": "platform-cdn"
+      },
+      {
+        "selector": "img",
+        "href": "https://images.planningcenterusercontent.com/v1/transform?bucket=registrations-production&expires_at=1792576800&key=uploads%2Fevent%2Flogo%2F3917880%2Fimage-1790647721763.jpeg&thumb=720x405%23&version=1790647741&signature=d5a3eb0eb33650d34ee260654fd9be9c6965b95327b11c4645302b737e2f159a",
+        "type": "jpeg&thumb=720x405%23&version=1790647741&signature=d5a3eb0eb33650d34ee260654fd9be9c6965b95327b11c4645302b737e2f159a",
+        "width": 720,
+        "height": 405,
+        "svgContent": null,
+        "colors": [],
+        "isLight": false,
+        "isDark": false,
+        "needsDarkBackground": false,
+        "needsLightBackground": false,
+        "ownership": "third-party"
+      },
+      {
+        "selector": "img",
+        "href": "https://images.planningcenterusercontent.com/v1/transform?bucket=registrations-production&expires_at=1792576800&key=uploads%2Fevent%2Flogo%2F3917904%2Fimage-1790647765818.jpeg&thumb=720x405%23&version=1791338372&signature=f306c9d08ebc2380edc2bb4269c2d53325050cd0372051efe47552e5f3e9edc5",
+        "type": "jpeg&thumb=720x405%23&version=1791338372&signature=f306c9d08ebc2380edc2bb4269c2d53325050cd0372051efe47552e5f3e9edc5",
+        "width": 720,
+        "height": 405,
+        "svgContent": null,
+        "colors": [],
+        "isLight": false,
+        "isDark": false,
+        "needsDarkBackground": false,
+        "needsLightBackground": false,
+        "ownership": "third-party"
+      },
+      {
+        "selector": "img",
+        "href": "https://images.planningcenterusercontent.com/v1/transform?bucket=registrations-production&expires_at=1792576800&key=uploads%2Fevent%2Flogo%2F3930712%2Fimage-1790829308633.jpeg&thumb=720x405%23&version=1791010916&signature=b990f1e66a14b6e6444902fa60184ee60fb5c4de7f3099ebd9aa876658a849f6",
+        "type": "jpeg&thumb=720x405%23&version=1791010916&signature=b990f1e66a14b6e6444902fa60184ee60fb5c4de7f3099ebd9aa876658a849f6",
+        "width": 720,
+        "height": 405,
+        "svgContent": null,
+        "colors": [],
+        "isLight": false,
+        "isDark": false,
+        "needsDarkBackground": false,
+        "needsLightBackground": false,
+        "ownership": "third-party"
+      }
+    ]
+  },
+  "fonts": {
+    "computed": [
+      {
+        "family": "Arial, Helvetica, sans-serif",
+        "weights": [
+          "400",
+          "500",
+          "700"
+        ],
+        "source": "web"
+      },
+      {
+        "family": "Manrope, sans-serif",
+        "weights": [
+          "400"
+        ],
+        "source": "web"
+      }
+    ],
+    "baseSizePx": 16
+  },
+  "confidence": {
+    "colorExtraction": 0.9,
+    "logoDetection": 0.95,
+    "fontDetection": 0.8
+  },
+  "screenshot": {
+    "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/de8dfc47-2e12-4184-8f07-0f577fe292f3/screenshot.png",
+    "width": 1920,
+    "height": 1080,
+    "sizeBytes": 33296,
+    "uploadedAt": "2026-10-20T15:34:57.164Z"
+  },
+  "assets": {
+    "784733a3-e6ff-483a-a8a7-effc4651d8a4": {
+      "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/de8dfc47-2e12-4184-8f07-0f577fe292f3/assets/784733a3-e6ff-483a-a8a7-effc4651d8a4.png",
+      "name": "The-House-Logo_512x512-Black-horizontal__largepreview__.webp",
+      "type": "image",
+      "description": "",
+      "metadata": {
+        "size": "12.42 KB",
+        "mimeType": "image/png",
+        "sizeBytes": 12715,
+        "uploadedAt": "2026-10-20T15:34:57.397Z"
+      }
+    },
+    "1230a3f0-5e77-40f6-a06b-4d418ea3df43": {
+      "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/de8dfc47-2e12-4184-8f07-0f577fe292f3/assets/1230a3f0-5e77-40f6-a06b-4d418ea3df43.jpg",
+      "name": "IMG_0863__mediumsquare__.webp",
+      "type": "image",
+      "description": "",
+      "metadata": {
+        "size": "44.03 KB",
+        "mimeType": "image/jpeg",
+        "sizeBytes": 45086,
+        "uploadedAt": "2026-10-20T15:34:57.353Z"
+      }
+    },
+    "66c0597d-ce56-4ec2-94b6-bb4310b8e4b5": {
+      "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/de8dfc47-2e12-4184-8f07-0f577fe292f3/assets/66c0597d-ce56-4ec2-94b6-bb4310b8e4b5.jpg",
+      "name": "JF2A5245__postcard__.webp",
+      "type": "image",
+      "description": "",
+      "metadata": {
+        "size": "22.56 KB",
+        "mimeType": "image/jpeg",
+        "sizeBytes": 23105,
+        "uploadedAt": "2026-10-20T15:34:57.689Z"
+      }
+    },
+    "b40184ff-31c7-47be-b7b8-d98624fd2fc6": {
+      "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/de8dfc47-2e12-4184-8f07-0f577fe292f3/assets/b40184ff-31c7-47be-b7b8-d98624fd2fc6.jpg",
+      "name": "town-location__postcard__.webp",
+      "type": "image",
+      "description": "",
+      "metadata": {
+        "size": "24.36 KB",
+        "mimeType": "image/jpeg",
+        "sizeBytes": 24945,
+        "uploadedAt": "2026-10-20T15:34:57.440Z"
+      }
+    },
+    "f5e85b7f-1e5c-4053-8a2a-ff0a9d7895be": {
+      "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/de8dfc47-2e12-4184-8f07-0f577fe292f3/assets/f5e85b7f-1e5c-4053-8a2a-ff0a9d7895be.jpg",
+      "name": "transform",
+      "type": "image",
+      "description": "",
+      "metadata": {
+        "size": "34.95 KB",
+        "mimeType": "image/jpeg",
+        "sizeBytes": 35788,
+        "uploadedAt": "2026-10-20T15:34:57.382Z"
+      }
+    },
+    "70f8167c-9204-4a7e-8995-4f82d9684879": {
+      "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/de8dfc47-2e12-4184-8f07-0f577fe292f3/assets/70f8167c-9204-4a7e-8995-4f82d9684879.jpg",
+      "name": "transform",
+      "type": "image",
+      "description": "",
+      "metadata": {
+        "size": "39.31 KB",
+        "mimeType": "image/jpeg",
+        "sizeBytes": 40250,
+        "uploadedAt": "2026-10-20T15:34:57.878Z"
+      }
+    },
+    "fb6cea73-3f13-49a8-ae89-fe60dc7b941e": {
+      "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/de8dfc47-2e12-4184-8f07-0f577fe292f3/assets/fb6cea73-3f13-49a8-ae89-fe60dc7b941e.jpg",
+      "name": "transform",
+      "type": "image",
+      "description": "",
+      "metadata": {
+        "size": "43.67 KB",
+        "mimeType": "image/jpeg",
+        "sizeBytes": 44716,
+        "uploadedAt": "2026-10-20T15:34:57.859Z"
+      }
+    },
+    "ed5133ff-08cc-4686-bfc4-7d293f5f5ced": {
+      "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/brand/de8dfc47-2e12-4184-8f07-0f577fe292f3/assets/ed5133ff-08cc-4686-bfc4-7d293f5f5ced.png",
+      "name": "The-House-Logo-Black__largepreview__.webp",
+      "type": "image",
+      "description": "",
+      "metadata": {
+        "size": "17.21 KB",
+        "mimeType": "image/png",
+        "sizeBytes": 17624,
+        "uploadedAt": "2026-10-20T15:34:57.857Z"
+      }
+    }
+  }
+}

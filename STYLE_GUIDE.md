@@ -1,76 +1,38 @@
-# Modern Church Design System & Style Guide
+# Doxa Website Design Guide
 
-## Philosophy
-This design system aims to reflect an **authentic religious identity** through **modern, minimalist aesthetics**. It prioritizes clarity, readability, and spiritual serenity over clutter and noise.
+The public site uses flat surfaces, clear sans-serif typography and photography. Headings stand alone, with no eyebrow labels.
 
-### Key Principles
-1.  **Minimalist Aesthetics**: Clean lines, generous whitespace, and purposeful content. Avoid "AI slop" (cluttered, generic, low-quality generated content).
-2.  **Responsive Grid**: A fluid, mobile-first grid system ensuring content looks great on all devices.
-3.  **Strategic White Space**: Using padding and margins to create breathing room, directing focus to key messages (scripture, sermons, events).
-4.  **High-Quality Imagery**: Full-width, immersive visuals with proper overlays for text readability.
-5.  **Typography**: A strong typographic hierarchy using **Geist Sans** for readability and modern feel.
+## Reference direction
 
----
+Chancelle Plus provides the local reference for warm paper surfaces, thin dividers, square buttons and generous image sections. The active Arial/Helvetica heading styles at [The House](https://www.thehouseest.com/) inform the typography. [Cowplain Church](https://www.cowplainchurch.co.uk/) and [Heritage Fellowship](https://www.heritagefc.net/) inform visitor information and clear next steps. Their wording, logos and congregation photographs are not Doxa content.
 
-## Typography Scale
-We use a fluid typography scale rooted in the `Geist Sans` font family.
+## Typography
 
--   **Display (Hero)**: `text-5xl md:text-7xl font-bold tracking-tight`
--   **H1 (Page Title)**: `text-4xl md:text-5xl font-bold tracking-tight`
--   **H2 (Section Header)**: `text-3xl md:text-4xl font-semibold tracking-tight`
--   **H3 (Card Title)**: `text-xl md:text-2xl font-semibold`
--   **Body Large (Lead)**: `text-lg md:text-xl text-muted-foreground leading-relaxed`
--   **Body (Default)**: `text-base text-foreground leading-normal`
--   **Small (Meta/Footer)**: `text-sm text-muted-foreground`
+Use Arial, Helvetica, sans-serif for headings and body copy. Display and section headings use medium weight, normal case, normal style and close spacing around -0.055em. Body copy uses comfortable line height, around 1.8. Headings scale down for mobile; body text remains readable without zooming.
 
----
+## Colour and surfaces
 
-## Color Palette
-A vibrant and spiritual palette derived from the church's visual identity.
+| Token      | Value   | Use                                  |
+| ---------- | ------- | ------------------------------------ |
+| Paper      | #f8f6f1 | Main background                      |
+| Ink        | #17213d | Primary text                         |
+| Royal blue | #101f70 | Primary actions                      |
+| Red        | #b52b37 | Restrained identity accent and focus |
+| Rule       | #dddcd6 | Section and row dividers             |
+| Footer     | #101a35 | Footer background                    |
 
-### Core Variables (HSL)
--   **Primary**: `232 78% 25%` (Deep Royal Blue) - Used for primary actions, branding, and emphasis.
--   **Secondary**: `354 70% 45%` (Deep Red) - Used for strong accents, "Love" themes, and highlights.
--   **Accent**: `25 80% 92%` (Light Warm Orange/Peach) - Used for backgrounds, subtle highlights, and warmth.
--   **Background**: `0 0% 100%` (White) - Clean canvas.
--   **Foreground**: `220 15% 15%` (Dark Blue-Grey) - High contrast text.
--   **Muted**: `30 50% 96%` (Warm Cream) - Subtle section backgrounds.
+Use square corners and flat colour. Avoid decorative shadows, glass panels, pill buttons and rounded image masks. Use a restrained dark image overlay where text must remain readable over photography.
 
-### Usage
--   **Text**: Use `text-foreground` for main text, `text-muted-foreground` for secondary text.
--   **Primary Elements**: Buttons, active states, and key headings use `bg-primary` or `text-primary`.
--   **Accents**: Use `text-secondary` for passionate/urgent messages (e.g., "Jesus Loves You").
--   **Backgrounds**: Use `bg-muted` or `bg-accent` to create warmth and separation between white sections.
+## Composition
 
----
+The desktop container has a 1280px maximum width, with generous horizontal spacing reducing to 20px per side on phones. A full-width hero introduces the church and leads directly to visit information. Ruled rows communicate services and events. Article and album grids appear when real entries exist.
 
-## Spacing System
-We use a consistent spacing scale to ensure rhythm.
+Use `PageIntro` for page titles and descriptions. Use `EditorialImage` for Sanity images and a real local asset for the homepage fallback. Preserve the actual church logo once supplied; the current text identity is provisional.
 
--   **Section Padding**: `py-16 md:py-24` (Major sections), `py-12` (Minor sections).
--   **Container Padding**: `px-4 md:px-6` (Default container).
--   **Element Spacing**: `gap-4`, `gap-8`, `gap-12` for grids and flex layouts.
+## Accessibility
 
----
+Use one h1 and main landmark per public page, logical headings, a skip link, clear link names and visible keyboard focus. Keep the mobile sheet keyboard-operable with Escape and focus return. Support 320px reflow and reduced motion. Give images useful descriptions without claiming a generic photograph depicts Doxa members. Automated checks support review; they do not establish full accessibility conformance.
 
-## Components
+## Motion
 
-### Buttons
--   **Primary**: Rounded, solid background, distinct shadow. `rounded-full px-8 py-3 font-medium transition-all hover:opacity-90`.
--   **Secondary/Outline**: Bordered, transparent background. `border border-input bg-background hover:bg-accent hover:text-accent-foreground`.
-
-### Cards
--   **Modern Card**: Minimal border, soft shadow, ample internal padding (`p-6`). `bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow duration-200 border-none`.
-
-### Navigation
--   **Header**: Sticky, glassmorphism effect (`backdrop-blur-md bg-white/80`).
--   **Links**: Clear, high-contrast links with subtle hover effects.
-
----
-
-## Accessibility (WCAG 2.1 AA)
--   **Contrast**: Ensure text contrast ratio is at least 4.5:1.
--   **Focus States**: Visible focus rings on all interactive elements.
--   **Semantic HTML**: Use `<main>`, `<section>`, `<article>`, `<nav>`, `<footer>` appropriately.
--   **Alt Text**: All images must have descriptive `alt` attributes.
-
+Follow [accessibility and motion guidance](docs/accessibility-and-motion.md), adapted from the three-app BLIP workspace. Use one-time transform/opacity entrances with fully visible static content, reduced-motion and data-saver fallbacks, focus-safe cancellation and cleanup on navigation. Keep the flat theme and no-eyebrow requirement.

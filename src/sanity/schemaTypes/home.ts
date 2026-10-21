@@ -2,7 +2,9 @@ import { defineField, defineType } from "sanity";
 
 export const homeType = defineType({
   name: "home",
-  title: "Doxa Home",
+  title: "Home Content",
+  description:
+    "The landing page uses the hero photograph and daily message here. Church identity is managed in the website's static content files.",
   type: "document",
   fields: [
     defineField({
@@ -17,11 +19,16 @@ export const homeType = defineType({
       name: "dailyMessage",
       title: "Daily Message",
       type: "text",
+      description:
+        "The full message shown on the landing page. Separate paragraphs with blank lines. Publish changes to update the public website.",
     }),
     defineField({
       name: "dailyVerse",
-      title: "Daily Verse",
+      title: "Legacy Daily Verse",
       type: "text",
+      readOnly: true,
+      description:
+        "Retained for reference; the public site displays Daily Message instead.",
     }),
     defineField({
       name: "vision",
@@ -36,7 +43,7 @@ export const homeType = defineType({
     defineField({
       name: "churchEvents",
       title: "Church Events",
-      type: "array", 
+      type: "array",
       of: [
         {
           type: "reference",

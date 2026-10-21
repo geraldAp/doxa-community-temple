@@ -41,3 +41,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Temporary design exports and local screenshots
+/.superdesign/tmp/
+/docs/previews/
+!.env.example

@@ -1,103 +1,100 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { Links } from "./sharedLinks";
-import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { Menu, ArrowUpRight } from "lucide-react";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTitle,
+  SheetDescription,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
+const navigation = [
+  { href: "/about", label: "Our church" },
+  { href: "/events", label: "What’s on" },
+  { href: "/blog", label: "Articles" },
+  { href: "/church-life", label: "Church life" },
+  { href: "/#daily-message", label: "Daily message" },
+];
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  const [open, setOpen] = useState(false);
+  if (pathname.startsWith("/studio")) return null;
+  const current = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
   return (
-    <header
-      className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent",
-        scrolled ? "bg-white/80 backdrop-blur-md shadow-sm border-white/20" : "bg-transparent"
-      )}
-    >
-      <nav className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <span className="text-2xl font-bold tracking-tighter text-primary">Doxa</span>
-          <span className="text-sm font-semibold text-secondary hidden sm:inline-block tracking-widest uppercase">Community Temple</span>
+    <header className="site-header">
+      <div className="church-container header-inner">
+        <Link
+          href="/"
+          className="wordmark"
+          aria-label="Doxa Community Temple home"
+        >
+          <span>
+            DOXA<span className="brand-dot">.</span>
+          </span>
+          <span className="wordmark-subtitle">
+            COMMUNITY
+            <br />
+            TEMPLE
+          </span>
         </Link>
-        
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          <div className="flex gap-6">
-            {Links.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
-                  pathname === item.href
-                    ? "text-primary font-semibold"
-                    : "text-muted-foreground"
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-          <Button asChild className="rounded-full px-6">
-            <Link href="/give">Give Now</Link>
-          </Button>
-        </div>
-
-        {/* Mobile Navigation */}
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <nav aria-label="Primary" className="desktop-nav max-lg:!hidden">
+          {navigation.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={current(item.href) ? "page" : undefined}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <Link className="church-button header-visit" href="/visit">
+          Plan a visit <ArrowUpRight size={16} aria-hidden="true" />
+        </Link>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-6 w-6" />
-              <span className="sr-only">Toggle menu</span>
-            </Button>
+            <button
+              type="button"
+              className="mobile-menu-button max-lg:!flex"
+              aria-label="Open navigation"
+            >
+              <Menu aria-hidden="true" />
+            </button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-full sm:w-[300px] p-0">
-            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-            <div className="flex flex-col h-full bg-background p-6">
-              <div className="flex items-center justify-between mb-8">
-                <span className="text-2xl font-bold">Doxa</span>
-                {/* Close button is handled by Sheet primitive usually, but custom one can be added if needed */}
-              </div>
-              <nav className="flex flex-col gap-4">
-                {Links.map((item) => (
+          <SheetContent className="bg-background">
+            <SheetTitle className="text-3xl font-medium tracking-tight">
+              Welcome to Doxa.
+            </SheetTitle>
+            <SheetDescription className="sr-only">
+              Browse the church, plan a visit, or get in touch.
+            </SheetDescription>
+            <nav aria-label="Mobile" className="mobile-nav">
+              {[
+                ...navigation,
+                { href: "/visit", label: "Plan a visit" },
+                { href: "/give", label: "Give & volunteer" },
+                { href: "/membership", label: "Membership" },
+              ].map((item) => (
+                <SheetClose asChild key={item.href}>
                   <Link
-                    key={item.href}
                     href={item.href}
-                    className={cn(
-                      "text-lg font-medium py-2 border-b border-border/50 transition-colors hover:text-primary",
-                      pathname === item.href
-                        ? "text-primary font-semibold"
-                        : "text-muted-foreground"
-                    )}
-                    onClick={() => setIsOpen(false)}
+                    aria-current={current(item.href) ? "page" : undefined}
                   >
                     {item.label}
                   </Link>
-                ))}
-                <Button asChild className="mt-4 w-full rounded-full" size="lg">
-                  <Link href="/give" onClick={() => setIsOpen(false)}>Give Now</Link>
-                </Button>
-              </nav>
-            </div>
+                </SheetClose>
+              ))}
+            </nav>
           </SheetContent>
         </Sheet>
-      </nav>
+      </div>
     </header>
   );
 }
-

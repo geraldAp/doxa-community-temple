@@ -46,6 +46,7 @@ export const galleryAlbumType = defineType({
               title: "Alt Text",
               type: "string",
               description: "Short description for accessibility",
+              validation: (rule) => rule.required(),
             }),
           ],
         },

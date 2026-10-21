@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Doxa Community Temple
 
-## Getting Started
+Church website built with Next.js 15 App Router, React 19, TypeScript, Tailwind CSS and Sanity Studio.
 
-First, run the development server:
+## Local development
 
-```bash
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. For a production preview:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run typecheck
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The public identifiers in `.env.example` match the existing church website. Copy that file to `.env.local` if you need explicit environment configuration. Read access to published public content does not require a write token. Keep any migration credentials in ignored local environment files and out of `NEXT_PUBLIC_` variables.
 
-## Learn More
+`SANITY_DISABLED=1` runs the public site without contacting Sanity. The homepage still shows the welcome, locally carried-over photograph, contact information and service schedule.
 
-To learn more about Next.js, take a look at the following resources:
+## Content ownership
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/content/church.ts`: published mission, vision and objectives, plus space for approved history, beliefs and leadership. Empty fields remain hidden.
+- `src/config/church.ts`: church contacts, map link, service schedule and social links supplied by the church.
+- `src/lib/editorial.ts`: server-only published Sanity reads and date-aware content selection.
+- `src/components/home/HomePage.tsx`: homepage presentation; the route loads editorial content on the server.
+- `src/app/globals.css`: flat public theme with Arial/Helvetica headings, square actions, thin rules and no eyebrow labels.
+- `/studio`: Sanity publishing for the existing home daily message, articles, events, albums and giving instructions.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+See [the design guide](STYLE_GUIDE.md), [the rebranding plan](docs/rebranding-plan.md) and [publishing and migration notes](docs/publishing-guide.md).
 
-## Deploy on Vercel
+## Contact and enquiries
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Membership and volunteering use direct church contact. The earlier API endpoints only returned success without delivering submissions; they now return 503 with the church telephone number. The old chatbot is not mounted, and its endpoint directs visitors to the church team because its previous instructions contained conflicting schedules and 2025 programmes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Legacy page components and the old `src/lib/api.ts` are retained for reference, but the redesigned public routes use the new editorial boundary and static identity files.
+
+## Verification
+
+Run `npm run typecheck` and `npm run build` after source changes. The existing lint command needs an ESLint setup before it can be used independently. Browser verification for this pass covered all 13 public routes, 320px and 390px homepage reflow, mobile navigation, missing editorial routes and contact endpoint responses. The publishing guide records the scope and limitations.

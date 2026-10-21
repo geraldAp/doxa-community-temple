@@ -2,6 +2,7 @@ import { defineType, defineField } from "sanity";
 
 export const aboutType = defineType({
   name: "about",
+  title: "Legacy About Content",
   type: "document",
   fields: [
     defineField({
@@ -14,7 +15,8 @@ export const aboutType = defineType({
       title: "About Content Blocks",
       type: "array",
       of: [{ type: "blockContent" }],
-      description: "Flexible content sections supporting headings, text, and images",
+      description:
+        "Flexible content sections supporting headings, text, and images",
     }),
     defineField({
       title: "Our Objectives",
