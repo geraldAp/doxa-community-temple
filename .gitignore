@@ -52,5 +52,5 @@ next-env.d.ts
 __pycache__/
 *.pyc
 
-# Local WhatsApp receiver, session keys, and toolchain
+# Local integration artifacts
 /.integrations/

@@ -73,27 +73,15 @@ handlers, object indexing, and HTML string handling.
 its values are existing DOM nodes and animation handles, never strings inserted
 as HTML. All other lint findings fail the workflow.
 
-## Automatic morning messages
+## Publishing Patriarch’s PEN
 
-The Codex automation **Publish Doxa’s Patriarch’s PEN** is active at 06:00 and 09:00
-Africa/Accra daily. The personal WhatsApp receiver was linked and verified on
-21 October 2026; the first scheduled run is 22 October. Only incoming messages
-from the configured Head Pastor received between 03:00 and 06:00 (including
-the 06:00 minute) are eligible. The 09:00 check catches up if the first run was
-missed or the message synced later, without a second publication for the day.
-They must follow his greeting, title, scripture
-with Bible reference, and reflection pattern. Long scripture passages with
-short reflections are accepted. Personal conversations and ambiguous messages
-must be skipped; multiple different matching messages require manual review.
-See `docs/whatsapp-setup.md` for the local read-only receiver, pairing, and
-source-verification steps. Publish only the Head Pastor's exact supplied
-messages. Never generate a substitute devotional, rewrite his words, or invent
-a message when none has arrived. Leave the existing website message in place
-when there is no new eligible message.
-
-This is a local automation: it requires this Mac to be awake,
-online, and running Codex. A Git commit or Vercel redeployment is not required
-for each Sanity content update.
+The automatic WhatsApp publishing schedule was stopped on 23 October 2026
+at the church's request after missed message delivery. The open-source
+WhatsApp receiver, MCP registration, and startup service were removed.
+Its private session data and downloaded dependencies were moved to the Mac's
+Trash for recoverable removal. Publish only the Head Pastor's exact supplied message manually
+in Sanity or through the publishing script below. Never generate a substitute,
+rewrite his words, or invent a message when none has been supplied.
 
 The publishing script is `scripts/publish_daily_message.py`. Its credential is
 read from `SANITY_WRITE_TOKEN` or the ignored `.env.daily-message` file with
