@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, ArrowUpRight } from "lucide-react";
@@ -33,9 +34,17 @@ export function Header() {
         <Link
           href="/"
           className="wordmark"
-          aria-label="Doxa Community Temple home"
+          aria-label="Doxa Community Temple home — Eden Revival Church International"
         >
-          <span>
+          <Image
+            src="/images/eden-revival-crest.jpg"
+            alt=""
+            width={276}
+            height={260}
+            className="church-crest"
+            priority
+          />
+          <span className="wordmark-name">
             DOXA<span className="brand-dot">.</span>
           </span>
           <span className="wordmark-subtitle">

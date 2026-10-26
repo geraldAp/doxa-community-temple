@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { churchDetails } from "@/config/church";
 
@@ -12,8 +13,21 @@ export function Footer() {
       <div className="church-container">
         <div className="footer-top">
           <div>
-            <Link className="footer-wordmark" href="/">
-              DOXA<span className="brand-dot">.</span>
+            <Link
+              className="footer-wordmark"
+              href="/"
+              aria-label="Doxa Community Temple home — Eden Revival Church International"
+            >
+              <Image
+                src="/images/eden-revival-crest.jpg"
+                alt=""
+                width={276}
+                height={260}
+                className="church-crest"
+              />
+              <span>
+                DOXA<span className="brand-dot">.</span>
+              </span>
             </Link>
             <p>Doxa Community Temple</p>
             <p className="footer-invitation">Come worship with us.</p>

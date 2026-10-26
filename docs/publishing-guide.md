@@ -8,7 +8,7 @@ Update `src/content/church.ts` for mission, vision, objectives, approved beliefs
 
 Update `src/config/church.ts` for service times, phone, address, map and official social links. The church supplied Sunday 8:00–11:00 AM and Wednesday Doxa Life Word and Friday Power and Glory, both 7:00–8:30 PM, Adamrobe (Obama Park), Oyibi, and +233 55 388 5938. Tuesday 11:00 AM–4:00 PM and Friday “open 24 hours” were not treated as worship gatherings. Do not reintroduce the conflicting times in legacy documents.
 
-The carried-over homepage photograph came from the old website's public Sanity hero asset. It does not establish that the pictured people are Doxa members. Replace it with church-owned photography when available. A genuine church logo and approved leadership portraits remain outstanding.
+The carried-over homepage photograph came from the old website's public Sanity hero asset. It does not establish that the pictured people are Doxa members. Replace it with church-owned photography when available. The Eden Revival Church International crest supplied on 26 October 2026 appears beside the Doxa wordmark in the header and footer. The original JPEG is preserved; CSS frames its circular crest. Approved leadership portraits remain outstanding.
 
 ## Publishing in Studio
 

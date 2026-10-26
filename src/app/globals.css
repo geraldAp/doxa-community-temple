@@ -133,11 +133,23 @@ summary {
   align-items: center;
   flex-shrink: 0;
 }
-.wordmark > span:first-child {
+.wordmark-name {
   font-size: 42px;
   font-weight: 800;
   letter-spacing: -3px;
   line-height: 1;
+}
+.church-crest {
+  width: 64px;
+  height: auto;
+  flex-shrink: 0;
+  /* Frame the supplied circular crest without altering the original image. */
+  clip-path: circle(44% at 53% 52%);
+}
+@media (max-width: 380px) {
+  .site-header .header-visit {
+    display: none;
+  }
 }
 .brand-dot {
   color: var(--church-red);
@@ -497,6 +509,9 @@ summary {
   padding-bottom: 54px;
 }
 .footer-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-size: 48px;
   font-weight: 800;
   letter-spacing: -3px;
@@ -683,8 +698,14 @@ summary {
     height: 78px;
     gap: 12px;
   }
-  .wordmark > span:first-child {
+  .wordmark-name {
     font-size: 34px;
+  }
+  .wordmark {
+    gap: 8px;
+  }
+  .wordmark .church-crest {
+    width: 44px;
   }
   .header-visit {
     margin-left: auto;
